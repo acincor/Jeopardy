@@ -1,127 +1,200 @@
 using UnityEngine;
-
+using UnityEngine.AI;
+using System.Collections;
+[RequireComponent(typeof(NavMeshAgent))]
 public class WorkerController : MonoBehaviour
 {
     [Header("Movement")]
-    public CharacterController controller;
-    public float moveSpeed = 5f;
+    public float baseMoveSpeed = 4.5f;
 
-    [Header("Destroy Machine")]
-    public float interactRange = 2f;
+    [Header("Invincible")]
+    public float invincibleTime = 2f;
+    public float InvincibleUntil { get; private set; }
+
+    [Header("Machine Detect")]
+    public float machineDetectRadius = 2.5f;
     public LayerMask machineLayer;
 
-    [Header("Life")]
-    public float invincibleTime = 2f;
-    private float invincibleUntil;
-    public bool IsInvincible => Time.time < invincibleUntil;
-    public WorkerLifeState LifeState { get; private set; } = WorkerLifeState.Alive;
-    public bool IsEliminated => LifeState == WorkerLifeState.Eliminated;
-    public bool IsCaught { get; private set; }
-
+    [Header("Runtime")]
     public WorkerState currentState = WorkerState.Idle;
-    public Machine currentMachine;
+    public WorkerLifeState LifeState { get; private set; } = WorkerLifeState.Alive;
 
-    public SafetyZone CurrentZone { get; private set; }
+    public bool IsCaught => currentState == WorkerState.Caught;
+    public bool IsEliminated => LifeState == WorkerLifeState.Eliminated;
+    public bool IsDestroyingMachine => currentState == WorkerState.Destroying;
+    public bool IsInvincible => Time.time < InvincibleUntil;
+    
+    private NavMeshAgent agent;
+    [Header("Catch")]
+    public float caughtDuration = 3f;   // 被抓后停留时间
+    public Transform spawnPos;        // 出生点（拖拽）
 
-    private Vector3 spawnPos;
+    private Coroutine caughtRoutine;
 
-    void Start()
+    private Machine currentMachine;
+
+    // Zone 只保存“我在哪”，不管逻辑
+     public SafetyZone CurrentZone { get; private set; }
+    // ================= 生命周期 =================
+
+    void Awake()
     {
-        spawnPos = transform.position;
+        agent = GetComponent<NavMeshAgent>();
+        agent.speed = baseMoveSpeed;
     }
 
     void Update()
     {
-        if (IsCaught) return;
+        if (IsEliminated || IsCaught)
+            return;
 
-        HandleMovement();
-        HandleMachineDestroy();
+        HandleMovementInput();
+        HandleDestroyInput();
     }
 
-    // =========================
-    // Movement
-    // =========================
-    void HandleMovement()
+    // ================= 移动 =================
+
+    void HandleMovementInput()
     {
         float h = Input.GetAxis("Horizontal");
         float v = Input.GetAxis("Vertical");
 
-        Vector3 move = new Vector3(h, 0, v);
+        Vector3 input = new Vector3(h, 0, v);
 
-        float zoneSlowMultiplier = 1f;
-        if (CurrentZone != null)
+        if (input.sqrMagnitude < 0.01f)
         {
-            zoneSlowMultiplier = Mathf.Lerp(
-                1f,
-                0.6f,
-                CurrentZone.dangerLevel / CurrentZone.maxDanger
-            );
-        }
-
-        controller.Move(move * moveSpeed * zoneSlowMultiplier * Time.deltaTime);
-    }
-
-    // =========================
-    // Machine Destroy
-    // =========================
-    void HandleMachineDestroy()
-    {
-        // 没按 C：停止拆
-        if (!Input.GetKey(KeyCode.C))
-        {
-            if (currentMachine != null)
-            {
-                currentMachine.CancelDestroy();
-                currentMachine = null;
+            if (currentState == WorkerState.Moving)
                 currentState = WorkerState.Idle;
-            }
             return;
         }
-        // 已在拆
+
+        currentState = WorkerState.Moving;
+
+        Vector3 targetPos = transform.position + input.normalized;
+        agent.SetDestination(targetPos);
+    }
+
+    // ================= 拆机器 =================
+
+    void HandleDestroyInput()
+    {
+        if (!Input.GetKey(KeyCode.C))
+        {
+            CancelDestroy();
+            return;
+        }
+
         if (currentMachine != null)
             return;
 
-        // 找附近 Machine
+        Machine nearby = FindNearbyMachine();
+        if (nearby != null)
+        {
+            BeginDestroy(nearby);
+        }
+    }
+
+    Machine FindNearbyMachine()
+    {
         Collider[] hits = Physics.OverlapSphere(
             transform.position,
-            interactRange,
+            machineDetectRadius,
             machineLayer
         );
-        if (hits.Length == 0)
-            return;
 
-        Machine machine = hits[0].GetComponentInParent<Machine>();
-if (machine == null)
-{
-    Debug.LogWarning("Hit but no Machine found in parent");
-    return;
-}
+        float minDist = float.MaxValue;
+        Machine result = null;
 
+        foreach (Collider hit in hits)
+        {
+            Machine m = hit.GetComponent<Machine>();
+            if (m == null || m.IsDestroyed)
+                continue;
+
+            float dist = Vector3.Distance(transform.position, m.transform.position);
+            if (dist < minDist)
+            {
+                minDist = dist;
+                result = m;
+            }
+        }
+
+        return result;
+    }
+
+    void BeginDestroy(Machine machine)
+    {
         currentMachine = machine;
         currentState = WorkerState.Destroying;
+        agent.ResetPath();
+
         machine.BeginDestroy(this);
     }
 
-    // Machine 被销毁时回调
-    public void OnMachineDestroyed(Machine m)
+    void CancelDestroy()
     {
-        if (currentMachine == m)
+        if (currentMachine == null)
+            return;
+
+        currentMachine.CancelDestroy(this);
+        currentMachine = null;
+
+        if (currentState == WorkerState.Destroying)
+            currentState = WorkerState.Idle;
+    }
+
+    public void OnMachineDestroyed(Machine machine)
+    {
+        if (currentMachine == machine)
         {
             currentMachine = null;
             currentState = WorkerState.Idle;
         }
     }
 
-    // =========================
-    // Zone
-    // =========================
+    // ================= 抓捕 =================
+
+    public void Caught()
+    {
+        if (Time.time < InvincibleUntil)
+            return;
+
+        currentState = WorkerState.Caught;
+        GameMode.Instance.OnWorkerCaught();// 结算一次
+        // 开始处理被抓流程
+        caughtRoutine = StartCoroutine(CaughtProcess());
+    }
+    IEnumerator CaughtProcess()
+    {
+        // 1️⃣ 等待 3 秒
+        yield return new WaitForSeconds(caughtDuration);
+
+        // 2️⃣ 回出生点
+        ResetToSpawn();
+    }
+    public void ResetToSpawn()
+    {
+        agent.isStopped = true;
+        agent.Warp(spawnPos.position);
+        agent.isStopped = false;
+        currentState = WorkerState.Idle;
+        InvincibleUntil = Time.time + invincibleTime;
+    }
+#if UNITY_EDITOR
+    void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.cyan;
+        Gizmos.DrawWireSphere(transform.position, machineDetectRadius);
+    }
+#endif
+
     void OnTriggerEnter(Collider other)
     {
         SafetyZone zone = other.GetComponent<SafetyZone>();
         if (zone != null)
         {
             CurrentZone = zone;
-            zone.workerInside = true;
+            zone.OnWorkerEnter();
         }
     }
 
@@ -130,33 +203,10 @@ if (machine == null)
         SafetyZone zone = other.GetComponent<SafetyZone>();
         if (zone != null && zone == CurrentZone)
         {
-            zone.workerInside = false;
+            zone.OnWorkerExit();
             CurrentZone = null;
         }
     }
 
-    // =========================
-    // Caught / Reset
-    // =========================
-    public void Caught()
-    {
-        IsCaught = true;
-        controller.enabled = false;
 
-        if (currentMachine != null)
-        {
-            currentMachine.CancelDestroy();
-            currentMachine = null;
-        }
-    }
-
-    public void ResetToSpawn()
-    {
-        controller.enabled = false;
-        transform.position = spawnPos;
-        controller.enabled = true;
-
-        IsCaught = false;
-        invincibleUntil = Time.time + invincibleTime;
-    }
 }

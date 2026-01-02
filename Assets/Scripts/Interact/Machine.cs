@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 public class Machine : MonoBehaviour
 {
@@ -6,43 +7,40 @@ public class Machine : MonoBehaviour
     public float destroyTime = 5f;
 
     private float progress = 0f;
-    private bool isBeingDestroyed = false;
-    private WorkerController currentWorker;
+    private List<WorkerController> workers = new();
 
     public bool IsDestroyed { get; private set; }
 
     void Update()
     {
-        if (!isBeingDestroyed || IsDestroyed || currentWorker == null)
+        if (IsDestroyed || workers.Count == 0)
             return;
 
-        progress += Time.deltaTime;
+        // 多人加速拆机（1人 = 1x，2人 = 1.5x，3人 = 2x ...）
+        float speedMultiplier = 1f + (workers.Count - 1) * 0.5f;
+        progress += Time.deltaTime * speedMultiplier;
 
         if (progress >= destroyTime)
-        {
             CompleteDestroy();
-        }
     }
-    // ================= 原有实现 =================
+
+    // ================= 对外接口 =================
 
     public void BeginDestroy(WorkerController worker)
     {
-        Debug.Log("BeginDestroy by " + worker.name);
-        if (IsDestroyed)
+        if (IsDestroyed || worker == null)
             return;
 
-        // 如果已经被别人拆，直接拒绝
-        if (isBeingDestroyed && currentWorker != worker)
-            return;
-
-        currentWorker = worker;
-        isBeingDestroyed = true;
+        if (!workers.Contains(worker))
+            workers.Add(worker);
     }
 
-    public void CancelDestroy()
+    public void CancelDestroy(WorkerController worker)
     {
-        isBeingDestroyed = false;
-        currentWorker = null;
+        if (worker == null)
+            return;
+
+        workers.Remove(worker);
     }
 
     // ================= 内部 =================
@@ -50,16 +48,20 @@ public class Machine : MonoBehaviour
     void CompleteDestroy()
     {
         IsDestroyed = true;
-        isBeingDestroyed = false;
 
-        // 通知 Worker
-        if (currentWorker != null)
-            currentWorker.OnMachineDestroyed(this);
+        // 通知所有参与的 Worker
+        foreach (var worker in workers)
+        {
+            if (worker != null)
+                worker.OnMachineDestroyed(this);
+        }
 
-        // 通知 GameMode
-        GameMode.Instance.OnMachineDestroyed();
+        workers.Clear();
 
-        // 视觉 / 碰撞关闭
+        // 广播事件（GameMode 监听）
+        MachineEvents.RaiseMachineDestroyed(this);
+
+        // 关闭机器
         gameObject.SetActive(false);
     }
 }

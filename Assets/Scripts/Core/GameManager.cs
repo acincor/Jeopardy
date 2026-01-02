@@ -1,24 +1,32 @@
 using UnityEngine;
+
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
-    public GameState CurrentState { get; private set; }
+    public GameState State { get; private set; }
 
     void Awake()
     {
         Instance = this;
-        CurrentState = GameState.Playing;
+        State = GameState.Init;
     }
-    
-    public void EndGame(GameResult result)
+
+    void Start()
     {
-        if (CurrentState != GameState.Playing) return;
+        StartGame();
+    }
 
-        CurrentState = result.bossWin
-            ? GameState.BossWin
-            : GameState.WorkerWin;
+    public void StartGame()
+    {
+        State = GameState.Playing;
+    }
 
-        Time.timeScale = 0f;
-        Debug.Log(result.bossWin ? "Boss Win" : "Workers Win");
+    public void EndGame()
+    {
+        State = GameState.End;
+
+        Debug.Log("Game Over");
+        Debug.Log($"Machines: {GameResult.destroyedMachines}");
+        Debug.Log($"Catches: {GameResult.totalCatches}");
     }
 }

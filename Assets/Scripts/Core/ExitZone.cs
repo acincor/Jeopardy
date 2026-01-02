@@ -6,9 +6,9 @@ public class ExitZone : MonoBehaviour
         WorkerController worker = other.GetComponent<WorkerController>();
         if (worker == null) return;
 
-        if (GameMode.Instance.CanWorkerResign())
+        if (GameMode.Instance.CanWorkerResign(worker))
         {
-            GameMode.Instance.WorkerResignSuccess();
+            GameMode.Instance.WorkerResignSuccess(worker);
         }
         else
         {

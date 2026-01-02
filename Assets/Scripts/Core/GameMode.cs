@@ -1,103 +1,119 @@
 using UnityEngine;
-using System.Collections.Generic;
+
 public class GameMode : MonoBehaviour
 {
     public static GameMode Instance;
 
     [Header("Win Conditions")]
-    public int totalMachines = 5;
-    public int requiredDestroyedMachines = 3;
-    public int requiredCatches = 3;
+    public int machinesToWin = 3;
+    public int catchesToWin = 5;
+    public int workersToResign = 1;   // 至少多少人成功撤离
 
-    private int destroyedMachines;
-    private int totalCatches;
-    public WorkerController worker;
-    public BossChase bossChase;
-    public List<WorkerController> workers = new List<WorkerController>();
+    private int resignedWorkers = 0;
+
     void Awake()
     {
-        Instance = this;
-    }
-    public void RegisterWorker(WorkerController worker)
-    {
-        if (!workers.Contains(worker))
-            workers.Add(worker);
-    }
-    // ===== 员工行为 =====
-
-    public void OnMachineDestroyed()
-    {
-        destroyedMachines++;
-
-        Debug.Log($"Machine destroyed: {destroyedMachines}");
-
-        if (destroyedMachines >= requiredDestroyedMachines)
+        if (Instance != null && Instance != this)
         {
-            // 注意：不是立刻胜利
-            Debug.Log("Worker can now resign");
+            Destroy(gameObject);
+            return;
+        }
+
+        Instance = this;
+        GameResult.Reset();
+    }
+
+    void OnEnable()
+    {
+        // ★ 监听事件，而不是被 Machine 直接调用
+        MachineEvents.OnMachineDestroyed += HandleMachineDestroyed;
+    }
+
+    void OnDisable()
+    {
+        MachineEvents.OnMachineDestroyed -= HandleMachineDestroyed;
+    }
+
+    // ================= 机器 =================
+
+    void HandleMachineDestroyed(Machine machine)
+    {
+        if (GameResult.gameEnded)
+            return;
+
+        GameResult.destroyedMachines++;
+
+        if (GameResult.destroyedMachines >= machinesToWin)
+        {
+            WorkerWin();
         }
     }
-    void RespawnWorker()
-    {
-        worker.ResetToSpawn();
-        bossChase.ResumeChase();
-    }
-    public bool CanWorkerResign()
-    {
-        return destroyedMachines >= requiredDestroyedMachines;
-    }
 
-    // ===== 老板行为 =====
+    // ================= 抓捕 =================
 
     public void OnWorkerCaught()
     {
-        Invoke(nameof(RespawnWorker), 1.5f);
-        totalCatches++;
-        
-        if (totalCatches >= requiredCatches)
+        if (GameResult.gameEnded)
+            return;
+
+        GameResult.totalCatches++;
+
+        if (GameResult.totalCatches >= catchesToWin)
         {
             BossWin();
         }
-        
     }
 
-    // ===== 结算 =====
+    // ================= 撤离 =================
 
-    public void WorkerResignSuccess()
+    public bool CanWorkerResign(WorkerController worker)
     {
-        GameResult result = new GameResult
+        if (worker == null)
+            return false;
+
+        if (worker.IsCaught)
+            return false;
+
+        if (GameResult.gameEnded)
+            return false;
+
+        return true;
+    }
+
+    public void WorkerResignSuccess(WorkerController worker)
+    {
+        if (GameResult.gameEnded)
+            return;
+
+        resignedWorkers++;
+
+        if (resignedWorkers >= workersToResign)
         {
-            bossWin = false,
-            destroyedMachines = destroyedMachines,
-            totalCatches = totalCatches
-        };
-
-        GameManager.Instance.EndGame(result);
-    }
-    public void OnWorkerEliminated(WorkerController worker)
-    {
-        CheckBossWin();
-    }
-
-    void CheckBossWin()
-    {
-        foreach (var w in workers)
-        {
-            if (!w.IsEliminated)
-                return;
+            WorkerWin();
         }
-
-        BossWin();
     }
+
+    // ================= 结算 =================
+
+    void WorkerWin()
+    {
+        if (GameResult.gameEnded) return;
+
+        GameResult.workerWin = true;
+        GameResult.bossWin = false;
+        GameResult.gameEnded = true;
+
+        GameManager.Instance.EndGame();
+    }
+
     void BossWin()
     {
-        GameResult result = new GameResult
-        {
-            bossWin = true,
-            destroyedMachines = destroyedMachines,
-            totalCatches = totalCatches
-        };
+        if (GameResult.gameEnded) return;
 
-        GameManager.Instance.EndGame(result);
+        GameResult.bossWin = true;
+        GameResult.workerWin = false;
+        GameResult.gameEnded = true;
+
+        GameManager.Instance.EndGame();
     }
 }

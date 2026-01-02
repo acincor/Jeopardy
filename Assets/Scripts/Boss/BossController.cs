@@ -1,64 +1,62 @@
 using UnityEngine;
 using UnityEngine.AI;
 
+[RequireComponent(typeof(NavMeshAgent))]
 public class BossController : MonoBehaviour
 {
-    public Transform target;
-    public static BossController Instance;
+    public float baseSpeed = 3.5f;
+    public float chaseBonus = 1.2f;
+    public float zoneBonus = 1.15f;
 
-    [Header("Control Mode")]
-    public BossControlMode controlMode = BossControlMode.AI;
-
-    [Header("Refs")]
-    public BossChase bossChase;
-    public NavMeshAgent agent;
+    private NavMeshAgent agent;
+    private bool isChasing;
+    private SafetyZone currentZone;
 
     void Awake()
     {
-        Instance = this;
-
-        if (agent == null) {
-            agent = GetComponent<NavMeshAgent>();
-            agent.updateRotation = true;
-            agent.updatePosition = true;
-        }
+        agent = GetComponent<NavMeshAgent>();
+        UpdateSpeed();
     }
 
-    void Update()
+    public void SetChasing(bool chasing)
     {
-        // 调试用：P 键切换 AI / 玩家
-        if (Input.GetKeyDown(KeyCode.P))
+        isChasing = chasing;
+        UpdateSpeed();
+
+        if (currentZone != null)
         {
-            ToggleControlMode();
+            if (chasing)
+                currentZone.OnBossChaseEnter();
+            else
+                currentZone.OnBossChaseExit();
         }
     }
 
-    public void ToggleControlMode()
+    public void SetZone(SafetyZone zone)
     {
-        if (controlMode == BossControlMode.AI)
-            SetPlayerControl();
-        else
-            SetAIControl();
+        // 离开旧 zone
+        if (currentZone != null && isChasing)
+            currentZone.OnBossChaseExit();
+
+        currentZone = zone;
+
+        // 进入新 zone
+        if (currentZone != null && isChasing)
+            currentZone.OnBossChaseEnter();
+
+        UpdateSpeed();
     }
 
-    public void SetPlayerControl()
+    void UpdateSpeed()
     {
-        controlMode = BossControlMode.Player;
+        float speed = baseSpeed;
 
-        // ★ 核心：AI 必须完全停
-        bossChase.PauseChase();
-        agent.ResetPath();
-    }
+        if (isChasing)
+            speed *= chaseBonus;
 
-    public void SetAIControl()
-    {
-        controlMode = BossControlMode.AI;
+        if (currentZone != null && currentZone.IsDangerous)
+            speed *= zoneBonus;
 
-        bossChase.ResumeChase();
-    }
-
-    public bool IsPlayerControl()
-    {
-        return controlMode == BossControlMode.Player;
+        agent.speed = speed;
     }
 }

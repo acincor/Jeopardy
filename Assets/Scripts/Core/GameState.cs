@@ -1,6 +1,6 @@
 public enum GameState
 {
+    Init,
     Playing,
-    BossWin,
-    WorkerWin
+    End
 }

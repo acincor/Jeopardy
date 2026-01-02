@@ -2,44 +2,49 @@ using UnityEngine;
 
 public class BossCatch : MonoBehaviour
 {
-    public BossChase bossChase;
-    public Transform eyePoint;
-    public float catchDistance = 4f;
-    public float catchCooldown = 2f;
-    private float lastCatchTime = -999f;
-    public LayerMask obstacleLayer;
+    public float catchDistance = 1.5f;
+    public float catchRadius = 0.6f;
     public LayerMask workerLayer;
-
-    public GameMode gameMode;
 
     void Update()
     {
-        if (Time.time - lastCatchTime < catchCooldown)
-            return;
-        Ray ray = new Ray(eyePoint.position, transform.forward);
-        Debug.DrawRay(eyePoint.position, transform.forward * catchDistance, Color.red);
+        TryCatch();
+    }
 
-        RaycastHit hit;
+    void TryCatch()
+    {
+        Ray ray = new Ray(transform.position + Vector3.up * 0.8f, transform.forward);
 
-        // 1️⃣ 先检查前方最近的障碍物
-        if (Physics.Raycast(ray, out hit, catchDistance, obstacleLayer))
-        {
-            // 前面有墙，直接 return，隔墙不能抓
-            return;
-        }
-        // 2️⃣ 没有墙，再检查 Worker
-        if (Physics.Raycast(ray, out hit, catchDistance, workerLayer))
+        if (Physics.SphereCast(
+            ray,
+            catchRadius,
+            out RaycastHit hit,
+            catchDistance,
+            workerLayer
+        ))
         {
             WorkerController worker = hit.collider.GetComponent<WorkerController>();
-            if (worker != null && !worker.IsCaught && !worker.IsInvincible)
-            {
-                Debug.Log("2");
-                worker.Caught();
-                gameMode.OnWorkerCaught();
-                bossChase.LoseTarget();
-                bossChase.PauseThenResume(1.0f);
-            }
+            if (worker == null) return;
+            if (worker.IsCaught) return;
+            Catch(worker);
         }
-        lastCatchTime = Time.time;
     }
+
+    void Catch(WorkerController worker)
+    {
+        Debug.Log("Catch worker: " + worker.name);
+        worker.Caught();
+
+        BossChase chase = GetComponent<BossChase>();
+        if (chase != null)
+            chase.OnTargetCaught();
+    }
+
+#if UNITY_EDITOR
+    void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawRay(transform.position + Vector3.up * 0.8f, transform.forward * catchDistance);
+    }
+#endif
 }

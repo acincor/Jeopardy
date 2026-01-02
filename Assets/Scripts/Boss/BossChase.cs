@@ -1,187 +1,170 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
-using System.Collections;
 
+[RequireComponent(typeof(NavMeshAgent))]
 public class BossChase : MonoBehaviour
 {
-    public NavMeshAgent agent;
-    public Transform target;
+    [Header("AI Switch")]
+    public bool enableAI = true;
 
-    public bool isChasing;
-    private bool canChase = true;
+    [Header("Detection")]
+    public float detectRadius = 12f;
+    public float loseTargetDistance = 18f;
+    public LayerMask workerLayer;
 
-    private SafetyZone lastZone; // 上一次所在 Zone
+    [Header("Update Interval")]
+    public float decisionInterval = 0.3f;
 
-    [Header("Speed Settings")]
-    public float baseSpeed = 3.5f;
-    public float dangerousZoneSpeedMultiplier = 0.85f; // 板区 / 危险区减速
-    public float angrySpeedMultiplier = 0.8f;           // 愤怒减速
+    private NavMeshAgent agent;
+    private BossController bossController;
 
-    [Header("Angry Settings")]
-    public float timeToGetAngry = 8f;    // 连续追击多久进入愤怒
-    public float angryDuration = 4f;     // 愤怒持续时间
-
-    private float chaseTimer = 0f;
-    private bool isAngry = false;
+    private WorkerController currentTarget;
+    private float decisionTimer;
 
     void Awake()
     {
-        if (agent == null)
-            agent = GetComponent<NavMeshAgent>();
-
-        baseSpeed = agent.speed;
+        agent = GetComponent<NavMeshAgent>();
+        bossController = GetComponent<BossController>();
     }
 
     void Update()
     {
-        // ★ 玩家控制时，AI 不运行（兼容真人切换）
-        if (BossController.Instance != null &&
-            BossController.Instance.IsPlayerControl())
-            return;
+        if (!enableAI) return;
 
-        if (!isChasing || !canChase || target == null)
-            return;
+        decisionTimer -= Time.deltaTime;
+        if (decisionTimer > 0f) return;
 
-        chaseTimer += Time.deltaTime;
+        decisionTimer = decisionInterval;
 
-        if (!isAngry && chaseTimer >= timeToGetAngry)
-        {
-            StartCoroutine(AngryRoutine());
-        }
-
-        // ===== Zone 处理 =====
-        WorkerController worker = target.GetComponent<WorkerController>();
-        SafetyZone currentZone = null;
-
-        if (worker != null)
-            currentZone = worker.CurrentZone;
-
-        if (currentZone != lastZone)
-        {
-            if (lastZone != null)
-                lastZone.bossChasingInside = false;
-
-            if (currentZone != null)
-                currentZone.bossChasingInside = true;
-
-            lastZone = currentZone;
-        }
-
-        // ===== 速度计算 =====
-        float speed = baseSpeed;
-
-        if (currentZone != null && currentZone.IsDangerous)
-        {
-            speed *= dangerousZoneSpeedMultiplier;
-        }
-
-        if (isAngry)
-        {
-            speed *= angrySpeedMultiplier;
-        }
-
-        agent.speed = speed;
-
-        agent.SetDestination(target.position);
+        Think();
+        Move();
     }
-    // 当前 Boss 是否在危险区
-public bool IsInDangerousZone()
-{
-    return lastZone != null && lastZone.IsDangerous;
-}
 
-// 当前速度倍率（统一规则出口）
-public float GetSpeedMultiplier()
-{
-    float multiplier = 1f;
-
-    if (IsInDangerousZone())
-        multiplier *= dangerousZoneSpeedMultiplier;
-
-    if (isAngry)
-        multiplier *= angrySpeedMultiplier;
-
-    return multiplier;
-}
-    // ================= 状态控制 =================
-
-    public void SetTarget(Transform newTarget)
+    // =========================
+    // AI 决策
+    // =========================
+    void Think()
     {
-        target = newTarget;
-        isChasing = true;
-        canChase = true;
-        chaseTimer = 0f;
-        isAngry = false;
+        if (currentTarget == null)
+        {
+            AcquireTarget();
+            return;
+        }
 
-        agent.isStopped = false;
+        // 目标失效
+        if (currentTarget.IsCaught ||
+            Vector3.Distance(transform.position, currentTarget.transform.position) > loseTargetDistance)
+        {
+            LoseTarget();
+        }
+    }
+
+    // =========================
+    // 目标选择（博弈核心）
+    // =========================
+    void AcquireTarget()
+    {
+        // 1️⃣ 拆机器的（最高优先级）
+        WorkerController destroying = FindWorkerDestroyingMachine();
+        if (destroying != null)
+        {
+            SetTarget(destroying);
+            return;
+        }
+
+        // 2️⃣ 最近的
+        WorkerController nearest = FindNearestWorker();
+        if (nearest != null)
+        {
+            SetTarget(nearest);
+        }
+    }
+
+    WorkerController FindWorkerDestroyingMachine()
+    {
+        foreach (WorkerController worker in FindAllWorkersInRange())
+        {
+            if (worker.IsDestroyingMachine)
+                return worker;
+        }
+        return null;
+    }
+
+    WorkerController FindNearestWorker()
+    {
+        float minDist = float.MaxValue;
+        WorkerController result = null;
+
+        foreach (WorkerController worker in FindAllWorkersInRange())
+        {
+            float dist = Vector3.Distance(transform.position, worker.transform.position);
+            if (dist < minDist)
+            {
+                minDist = dist;
+                result = worker;
+            }
+        }
+        return result;
+    }
+
+    List<WorkerController> FindAllWorkersInRange()
+    {
+        List<WorkerController> result = new();
+        Collider[] hits = Physics.OverlapSphere(transform.position, detectRadius, workerLayer);
+
+        foreach (Collider hit in hits)
+        {
+            WorkerController worker = hit.GetComponent<WorkerController>();
+            if (worker != null && !worker.IsCaught)
+                result.Add(worker);
+        }
+        return result;
+    }
+
+    // =========================
+    // 移动 & 状态输出
+    // =========================
+    void Move()
+    {
+        if (currentTarget == null)
+        {
+            bossController.SetChasing(false);
+            return;
+        }
+
+        bossController.SetChasing(true);
+        agent.SetDestination(currentTarget.transform.position);
+    }
+
+    // =========================
+    // Target 生命周期
+    // =========================
+    void SetTarget(WorkerController worker)
+    {
+        currentTarget = worker;
     }
 
     public void LoseTarget()
     {
-        isChasing = false;
-        target = null;
-
-        PauseChase();
-        ClearZoneState();
-        ResetAngryState();
+        currentTarget = null;
+        bossController.SetChasing(false);
     }
 
-    public void PauseChase()
+    // =========================
+    // 外部输入（Controller / Trigger）
+    // =========================
+
+    public void OnTargetCaught()
     {
-        canChase = false;
-        agent.isStopped = true;
-        agent.ResetPath();
+        LoseTarget();
     }
 
-    public void ResumeChase()
+#if UNITY_EDITOR
+    void OnDrawGizmosSelected()
     {
-        agent.isStopped = false;
-        canChase = true;
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, detectRadius);
     }
-
-    public void PauseThenResume(float seconds)
-    {
-        StopAllCoroutines();
-        ClearZoneState();
-        ResetAngryState();
-        StartCoroutine(PauseRoutine(seconds));
-    }
-
-    IEnumerator PauseRoutine(float seconds)
-    {
-        PauseChase();
-        yield return new WaitForSeconds(seconds);
-        ResumeChase();
-    }
-
-    // ================= 愤怒逻辑 =================
-
-    IEnumerator AngryRoutine()
-    {
-        isAngry = true;
-        yield return new WaitForSeconds(angryDuration);
-        ResetAngryState();
-    }
-
-    void ResetAngryState()
-    {
-        isAngry = false;
-        chaseTimer = 0f;
-        agent.speed = baseSpeed;
-    }
-
-    // ================= Zone 清理 =================
-
-    void ClearZoneState()
-    {
-        if (lastZone != null)
-        {
-            lastZone.bossChasingInside = false;
-            lastZone = null;
-        }
-
-        SafetyZone[] zones = FindObjectsOfType<SafetyZone>();
-        foreach (var z in zones)
-            z.bossChasingInside = false;
-    }
+#endif
 }

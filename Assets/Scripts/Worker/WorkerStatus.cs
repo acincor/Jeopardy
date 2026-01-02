@@ -1,13 +1,13 @@
 public enum WorkerLifeState
 {
     Alive,
-    Downed,
     Eliminated
 }
+
 public enum WorkerState
 {
     Idle,
+    Moving,
     Destroying,
-    Evading,
     Caught
 }

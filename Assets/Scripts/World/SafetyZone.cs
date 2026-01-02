@@ -2,54 +2,48 @@ using UnityEngine;
 
 public class SafetyZone : MonoBehaviour
 {
-    [Header("Stability")]
-    public float maxStability = 100f;
-    public float stability = 100f;
-
-    public float decayPerSecond = 25f;     // 被追时消耗
-    public float recoverPerSecond = 10f;   // 脱战恢复
-
-    [Header("State")]
-    public bool workerInside;
-    public bool bossChasingInside;
-     [Header("Runtime State")]
-    public float dangerLevel = 0f;
-
-    [Header("Config")]
+    [Header("Danger")]
+    public float dangerLevel;
+    public float maxDanger = 1f;
     public float dangerIncreasePerSecond = 0.25f;
     public float dangerDecreasePerSecond = 0.5f;
-    public float maxDanger = 1f;
+
+    private int workerCount = 0;
+    private bool bossChasingInside = false;
 
     public bool IsDangerous => dangerLevel >= maxDanger;
 
-    
-    void Update()
+    // ===== Worker =====
+    public void OnWorkerEnter()
     {
-        if (bossChasingInside)
-        {
-            dangerLevel += dangerIncreasePerSecond * Time.deltaTime;
-        }
-        else
-        {
-            dangerLevel -= dangerDecreasePerSecond * Time.deltaTime;
-        }
-
-        dangerLevel = Mathf.Clamp(dangerLevel, 0f, maxDanger);
-    
-        if (workerInside && bossChasingInside)
-        {
-            stability -= decayPerSecond * Time.deltaTime;
-        }
-        else
-        {
-            stability += recoverPerSecond * Time.deltaTime;
-        }
-
-        stability = Mathf.Clamp(stability, 0f, maxStability);
+        workerCount++;
     }
 
-    public float StabilityPercent
+    public void OnWorkerExit()
     {
-        get { return stability / maxStability; }
+        workerCount = Mathf.Max(0, workerCount - 1);
+    }
+
+    // ===== Boss =====
+    public void OnBossChaseEnter()
+    {
+        bossChasingInside = true;
+    }
+
+    public void OnBossChaseExit()
+    {
+        bossChasingInside = false;
+    }
+
+    void Update()
+    {
+        bool activeDanger = bossChasingInside && workerCount > 0;
+
+        if (activeDanger)
+            dangerLevel += dangerIncreasePerSecond * Time.deltaTime;
+        else
+            dangerLevel -= dangerDecreasePerSecond * Time.deltaTime;
+
+        dangerLevel = Mathf.Clamp(dangerLevel, 0f, maxDanger);
     }
 }
