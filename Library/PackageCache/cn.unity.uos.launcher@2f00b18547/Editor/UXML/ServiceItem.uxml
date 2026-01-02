@@ -1,0 +1,69 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UOSLauncher/Editor/Styles/ServiceItem.uss?fileID=7433441132597879392&amp;guid=dec63d1f3aaa3497ca96dbf577a0c80d&amp;type=3#ServiceItem" />
+    <ui:VisualElement name="ItemRoot" class="ItemRoot">
+        <ui:VisualElement name="ServiceIcon" class="ServiceIcon" />
+        <ui:VisualElement name="Info" class="Info">
+            <ui:VisualElement name="Header" class="Header">
+                <ui:Label text="Remote Config" display-tooltip-when-elided="true" name="Title" class="Title" />
+            </ui:VisualElement>
+            <ui:Label text="On-the-fly Game Tuner" display-tooltip-when-elided="true" name="Description" class="Description" />
+            <ui:Label display-tooltip-when-elided="true" name="InstallInfo" class="InstallInfo">
+                <ui:Label text="Installed," display-tooltip-when-elided="true" name="InstallStatus" class="VersionInfo" />
+                <ui:Button display-tooltip-when-elided="true" name="VersionAndDetail" text="V1.0.0" class="VersionAndDetail" />
+                <ui:Button display-tooltip-when-elided="true" name="UpgradeButton" class="icon LButton" style="border-left-width: 0; border-right-width: 0; border-top-width: 0; border-bottom-width: 0; display: none; visibility: hidden;">
+                    <ui:VisualElement name="LButtonIcon" />
+                    <ui:VisualElement name="LoadingIcon" style="visibility: hidden; display: none;" />
+                </ui:Button>
+            </ui:Label>
+        </ui:VisualElement>
+        <ui:VisualElement name="Buttons" tabindex="0" focusable="true" class="Buttons">
+            <ui:VisualElement name="ManageButtons" class="ManageButtons">
+                <ui:Button display-tooltip-when-elided="true" name="Install" text=" " class="LButton">
+                    <ui:VisualElement name="LButtonIcon" />
+                    <ui:VisualElement name="LoadingIcon" style="display: none; visibility: hidden;" />
+                </ui:Button>
+                <ui:Button display-tooltip-when-elided="true" name="Installed" class="icon LButton">
+                    <ui:VisualElement name="LButtonIcon" />
+                </ui:Button>
+                <ui:Button display-tooltip-when-elided="true" name="Upload" class="icon LButton">
+                    <ui:VisualElement name="LButtonIcon" />
+                </ui:Button>
+                <ui:Button display-tooltip-when-elided="true" name="ConfigWindow" class="icon LButton" style="display: none;">
+                    <ui:VisualElement name="LButtonIcon" />
+                </ui:Button>
+                <ui:Button display-tooltip-when-elided="true" name="ConfigWeb" class="icon LButton">
+                    <ui:VisualElement name="LButtonIcon" />
+                </ui:Button>
+                <ui:Button display-tooltip-when-elided="true" name="ServiceSample" text=" " class="LButton" style="display: none; visibility: hidden;">
+                    <ui:VisualElement name="LButtonIcon" />
+                    <ui:VisualElement name="LoadingIcon" style="display: none; visibility: hidden;" />
+                </ui:Button>
+                <ui:Button display-tooltip-when-elided="true" name="ServiceSampleImported" text=" " class="LButton" style="display: none; visibility: hidden;">
+                    <ui:VisualElement name="LButtonIcon" />
+                    <ui:VisualElement name="LoadingIcon" style="display: none; visibility: hidden;" />
+                </ui:Button>
+                <ui:Button display-tooltip-when-elided="true" name="ServiceSampleUrl" text=" " class="LButton" style="display: none; visibility: hidden;">
+                    <ui:VisualElement name="LButtonIcon" />
+                    <ui:VisualElement name="LoadingIcon" style="display: none; visibility: hidden;" />
+                </ui:Button>
+            </ui:VisualElement>
+            <ui:VisualElement name="EnableButtons" class="EnableButtons">
+                <ui:Button text="Enable" display-tooltip-when-elided="true" name="Enable" class="Enable" style="align-items: center; justify-content: center; font-size: 12px; visibility: visible;">
+                    <ui:VisualElement name="EnableLinkButton" style="flex-direction: column-reverse; left: 30px; width: 12px; top: 0; height: 12px; display: none; visibility: visible;" />
+                    <ui:VisualElement name="LoadingBackground" style="position: absolute; left: 0; top: 0; right: 0; bottom: 0; align-items: center; justify-content: center;">
+                        <ui:VisualElement name="LoadingIcon" style="visibility: hidden; display: none;" />
+                    </ui:VisualElement>
+                </ui:Button>
+                <ui:Button display-tooltip-when-elided="true" name="Dropdown" class="Dropdown">
+                    <ui:VisualElement name="Icon" class="Icon" />
+                </ui:Button>
+            </ui:VisualElement>
+            <ui:Button display-tooltip-when-elided="true" name="Docs" class="icon LButton" style="border-left-width: 0; border-right-width: 0; border-top-width: 0; border-bottom-width: 0;">
+                <ui:VisualElement name="LButtonIcon" />
+            </ui:Button>
+            <ui:Button display-tooltip-when-elided="true" name="HomePage" class="icon LButton" style="border-left-width: 0; border-right-width: 0; border-top-width: 0; border-bottom-width: 0;">
+                <ui:VisualElement name="LButtonIcon" />
+            </ui:Button>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

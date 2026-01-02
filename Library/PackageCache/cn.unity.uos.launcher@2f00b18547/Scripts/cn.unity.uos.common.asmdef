@@ -1,0 +1,16 @@
+{
+    "name": "Unity.UOS.Common",
+    "rootNamespace": "Unity.UOS.Common",
+    "references": [
+        "Unity.UOS.Encrypt"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": true,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

@@ -1,0 +1,182 @@
+.UOSIntroduction {
+    flex-grow: 1;
+    background-color: var(--launcher-background-main);
+    height: 91px;
+    flex-direction: row;
+    flex-shrink: 1;
+    align-self: auto;
+    align-items: center;
+    padding-left: 26px;
+    padding-right: 26px;
+    padding-top: 16px;
+    padding-bottom: 16px;
+}
+
+.UOSIntroduction > .UOSIcon {
+    flex-grow: 0;
+    background-image: var(--launcher-uos-logo);
+    height: 59px;
+    width: 51px;
+    flex-shrink: 0;
+}
+
+.UOSIntroduction > .Introduction {
+    flex-grow: 1;
+    margin-left: 23px;
+}
+
+.UOSIntroduction > .Introduction > .Title {
+    font-size: 21px;
+    -unity-font-style: bold;
+    color: var(--launcher-text-main);
+}
+
+.UOSIntroduction > .Introduction > .Detail {
+    font-size: 14px;
+    -unity-font-style: normal;
+    color: var(--launcher-text-hint);
+}
+
+.Services {
+    background-color: var(--launcher-border);
+    padding-top: 1px;
+}
+
+.UpcomingLabel {
+    background-color: var(--launcher-background-secondary);
+    height: 22px;
+    padding-left: 24px;
+    justify-content: flex-start;
+    align-items: center;
+    -unity-text-align: middle-left;
+    -unity-background-image-tint-color: rgb(255, 255, 255);
+}
+
+.Upcoming {
+    background-color: var(--launcher-border);
+    padding-top: 1px;
+}
+
+.UOSIntroduction > .Introduction > .InstallInfo {
+    color: var(--launcher-text-hint);
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    margin-top: 2px;
+    margin-left: 0;
+}
+
+.UOSIntroduction > .Introduction > .InstallInfo > .VersionAndDetailLauncher {
+    background-color: var(--launcher-background-transparent);
+    color: var(--launcher-text-link);
+    border-width: 0;
+    margin: 0;
+    display: none;
+    padding-left: 0;
+    padding-right: 0;
+    cursor: link;
+}
+
+.FixSettingsButton {
+    background-color: var(--launcher-background-transparent);
+    color: var(--launcher-text-link);
+    border-width: 0;
+    margin: 0;
+    display: none;
+    padding-left: 0;
+    padding-right: 0;
+    cursor: link;
+}
+
+.UOSIntroduction > .Introduction > .InstallInfo > .HelpAndHomepageBtn {
+    background-color: var(--launcher-background-transparent);
+    color: var(--launcher-text-link);
+    border-width: 0;
+    margin: 0;
+    padding-left: 0;
+    padding-right: 0;
+    cursor: link;
+}
+
+.UOSIntroduction > .Introduction > .InstallInfo > .Divider {
+    width: 0;
+    height: 10px;
+    margin: 0 8px;
+    border-color: var(--launcher-background-secondary);
+    border-left-width: 1px;
+}
+
+#UpgradeButtonLauncher {
+    background-image: var(--launcher-upgrade-button);
+    width: 16px;
+    height: 16px;
+    margin-left: 4px;
+    border-width: 0;
+    background-color: var(--launcher-background-transparent);
+    display: none;
+}
+
+#LinkHomepageIcon {
+    background-image: url("../Sprites/HomePage.png?fileID=21300000&guid=42eccffbaf8c946cfaf21e434cbc77c9&type=3#HomePage");
+    width: 16px;
+    height: 16px;
+    border-width: 0;
+    background-color: var(--launcher-background-transparent);
+    cursor: link;
+    -unity-background-image-tint-color: var(--launcher-text-link);
+}
+
+#GoToDevPortalForThisApp {
+    background-image: url("../Sprites/HomePage.png?fileID=21300000&guid=42eccffbaf8c946cfaf21e434cbc77c9&type=3#HomePage");
+    width: 16px;
+    height: 16px;
+    border-width: 0;
+    background-color: var(--launcher-background-transparent);
+    cursor: link;
+    -unity-background-image-tint-color: var(--launcher-text-link);
+}
+
+#WeixinMinigame {
+    background-color: var(--launcher-background-secondary);
+    padding: 2px 22px 2px 22px;
+}
+
+#AppLinker {
+    background-color: var(--launcher-background-secondary);
+    padding: 12px 22px 12px 22px;
+    border-bottom-width: 1px;
+    border-top-width: 1px;
+    border-color: var(--launcher-border);
+}
+
+#LinkedAppNameText {
+    max-width: 260px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+#AppLinker > .ErrorMessage > .FailIcon {
+    flex-grow: 0;
+    width: 12px;
+    background-image: url('../Sprites/Fail.png');
+    -unity-background-image-tint-color: var(--launcher-icon-background-tint);
+    height: 12px;
+    display: none;
+    visibility: visible;
+    margin-right: 4px;
+    overflow: visible;
+    flex-shrink: 0;
+}
+
+#AppLinker > .ErrorMessage {
+    flex-grow: 0;
+    flex-direction: row;
+    flex-shrink: 0;
+    justify-content: flex-start;
+    align-items: center;
+    height: auto;
+    width: 100%;
+    margin-top: 6px;
+    margin-bottom: 6px;
+    display: none;
+}

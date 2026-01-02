@@ -1,0 +1,20 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:Template name="ProjectSelector" src="./ProjectSelector.uxml?fileID=9197481963319205126&amp;guid=38f1a8db730adfd45861ec9f8c8f1642&amp;type=3#ProjectSelector" />
+    <ui:Template name="UOSAPPInfo" src="./UOSAPPInfo.uxml?fileID=9197481963319205126&amp;guid=55bdaebec3d51064aba52cdadf57965b&amp;type=3#UOSAPPInfo" />
+    <Style src="project://database/Assets/UOSLauncher/Editor/UXML/TabbedMenu/TabbedMenu-style.uss?fileID=7433441132597879392&amp;guid=937ebd05f689d414ea2bbb246674f74c&amp;type=3#TabbedMenu-style" />
+    <ui:VisualElement name="TabbedMenu-template">
+        <ui:VisualElement>
+            <ui:VisualElement name="tabs">
+                <ui:Label name="ProjectSelectorTab" text="By Unity project" class="tab currentlySelectedTab" />
+                <ui:Label name="UOSAPPInfoTab" text="By App ID/Secret" class="tab" />
+            </ui:VisualElement>
+            <ui:VisualElement name="tabContent" style="flex-shrink: 0;">
+                <ui:Instance template="ProjectSelector" name="ProjectSelectorContent" class="tabContent" style="flex-shrink: 0;" />
+                <ui:Instance template="UOSAPPInfo" name="UOSAPPInfoContent" class="unselectedContent tabContent" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+    <ui:VisualElement name="LinkAppFooter" style="flex-grow: 1; justify-content: center; align-items: stretch; height: 80px;">
+        <ui:Button text="Link App" name="LinkAppButton" style="margin-top: 0; margin-right: 10px; margin-bottom: 0; margin-left: 10px; height: 30px; justify-content: center;" />
+    </ui:VisualElement>
+</ui:UXML>
