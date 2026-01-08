@@ -1,9 +1,0 @@
-.project-selector {
-    background-color: var(--launcher-background-secondary);
-    flex-grow: 0;
-    align-self: auto;
-    padding: 20px 20px 0;
-    flex-shrink: 0;
-    align-items: stretch;
-    height: 200px;
-}

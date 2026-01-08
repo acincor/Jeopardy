@@ -1,62 +1,29 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-[RequireComponent(typeof(NavMeshAgent))]
 public class BossController : MonoBehaviour
 {
-    public float baseSpeed = 3.5f;
-    public float chaseBonus = 1.2f;
-    public float zoneBonus = 1.15f;
-
-    private NavMeshAgent agent;
-    private bool isChasing;
-    private SafetyZone currentZone;
-
-    void Awake()
+    protected WorkerController target;
+    protected NavMeshAgent agent;
+    protected BossState bossState;
+    protected Danger systemDanger;
+    // Start is called before the first frame update
+    void OnEnable() {
+        systemDanger = GameObject.FindObjectOfType<Danger>();
+    }
+    public virtual void Start()
     {
         agent = GetComponent<NavMeshAgent>();
-        UpdateSpeed();
+        
     }
-
-    public void SetChasing(bool chasing)
-    {
-        isChasing = chasing;
-        UpdateSpeed();
-
-        if (currentZone != null)
-        {
-            if (chasing)
-                currentZone.OnBossChaseEnter();
-            else
-                currentZone.OnBossChaseExit();
-        }
+    public virtual void SetState(BossState boss) {
+        bossState = boss;
+        systemDanger.SetState(bossState);
+        Debug.Log($"danger = {systemDanger}");
     }
-
-    public void SetZone(SafetyZone zone)
+    public virtual void DiscoverTarget()
     {
-        // 离开旧 zone
-        if (currentZone != null && isChasing)
-            currentZone.OnBossChaseExit();
-
-        currentZone = zone;
-
-        // 进入新 zone
-        if (currentZone != null && isChasing)
-            currentZone.OnBossChaseEnter();
-
-        UpdateSpeed();
-    }
-
-    void UpdateSpeed()
-    {
-        float speed = baseSpeed;
-
-        if (isChasing)
-            speed *= chaseBonus;
-
-        if (currentZone != null && currentZone.IsDangerous)
-            speed *= zoneBonus;
-
-        agent.speed = speed;
     }
 }

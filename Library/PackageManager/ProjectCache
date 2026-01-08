@@ -1,94 +1,33 @@
 m_ProjectFiles:
   m_ManifestFileStatus:
-    m_FilePath: /Users/acincor/Desktop/BE/Packages/manifest.json
+    m_FilePath: /Users/acincor/UnityTargets/Jeopardy/Packages/manifest.json
     m_PathExists: 1
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 639027931990000000
-    m_Hash: 3995936342
+      ticks: 639034803230000000
+    m_Hash: 341667142
   m_LockFileStatus:
-    m_FilePath: /Users/acincor/Desktop/BE/Packages/packages-lock.json
+    m_FilePath: /Users/acincor/UnityTargets/Jeopardy/Packages/packages-lock.json
     m_PathExists: 1
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 639027931990000000
-    m_Hash: 3825445866
+      ticks: 639034803230000000
+    m_Hash: 1182362800
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}
 m_LocalPackages:
   m_LocalFileStatus: []
-m_ProjectPath: /Users/acincor/Desktop/BE/Packages
+m_ProjectPath: /Users/acincor/UnityTargets/Jeopardy/Packages
 m_EditorVersion: 2022.3.62f1c1 (b0109b07edb8)
 m_ResolvedPackages:
-- packageId: cn.unity.uos.launcher@https://cnb.cool/unity/uos/UOSLauncher.git
-  testable: 0
-  isDirectDependency: 1
-  version: 2.7.5
-  source: 5
-  resolvedPath: /Users/acincor/Desktop/BE/Library/PackageCache/cn.unity.uos.launcher@2f00b18547
-  assetPath: Packages/cn.unity.uos.launcher
-  name: cn.unity.uos.launcher
-  displayName: UOS Launcher
-  author:
-    name: Unity Online Services
-    email: 
-    url: 
-  category: 
-  type: 
-  description: "UOS Editor Interface provides quick access to all UOS Services. \n\nDeveloper
-    can do specific operations efficiently in editor. You can enable services for
-    the project, manage UOS SDKs without caring about the dependencies. \n\nAnd If
-    you are developing Dedicated-Server for multiplayer game, you can easily do build
-    and deploy on multiverse by one click!"
-  status: 0
-  errors: []
-  versions:
-    all: []
-    compatible: []
-    recommended: 
-    deprecated: []
-  dependencies:
-  - name: com.unity.nuget.newtonsoft-json
-    version: 3.2.1
-  resolvedDependencies:
-  - name: com.unity.nuget.newtonsoft-json
-    version: 3.2.1
-  keywords: []
-  registry:
-    id: main
-    name: 
-    url: https://packages.unity.cn
-    scopes: []
-    isDefault: 1
-    capabilities: 7
-    configSource: 0
-  hideInEditor: 1
-  isAssetStorePackage: 0
-  datePublishedTicks: 0
-  documentationUrl: 
-  hasRepository: 0
-  repository:
-    type: 
-    url: 
-    revision: 
-    path: 
-  unityLifecycle:
-    version: 
-    nextVersion: 
-    recommendedVersion: 
-    isDeprecated: 0
-    deprecationMessage: 
-  isDeprecated: 0
-  deprecationMessage: 
-  fingerprint: 
 - packageId: com.unity.ai.navigation@1.1.7
   testable: 0
   isDirectDependency: 1
   version: 1.1.7
   source: 1
-  resolvedPath: /Users/acincor/Desktop/BE/Library/PackageCache/com.unity.ai.navigation@1.1.7
+  resolvedPath: /Users/acincor/UnityTargets/Jeopardy/Library/PackageCache/com.unity.ai.navigation@1.1.7
   assetPath: Packages/com.unity.ai.navigation
   name: com.unity.ai.navigation
   displayName: AI Navigation
@@ -183,178 +122,12 @@ m_ResolvedPackages:
   isDeprecated: 0
   deprecationMessage: 
   fingerprint: 
-- packageId: com.unity.collab-proxy@2.7.1
-  testable: 0
-  isDirectDependency: 1
-  version: 2.7.1
-  source: 1
-  resolvedPath: /Users/acincor/Desktop/BE/Library/PackageCache/com.unity.collab-proxy@2.7.1
-  assetPath: Packages/com.unity.collab-proxy
-  name: com.unity.collab-proxy
-  displayName: Version Control
-  author:
-    name: 
-    email: 
-    url: 
-  category: Editor
-  type: 
-  description: The package gives you the ability to use Unity Version Control in
-    the Unity editor. To use Unity Version Control, a subscription is required. Learn
-    more about how you can get started for free by visiting https://unity.com/solutions/version-control
-  status: 0
-  errors: []
-  versions:
-    all:
-    - 1.2.3-preview
-    - 1.2.4-preview
-    - 1.2.6
-    - 1.2.7
-    - 1.2.9
-    - 1.2.11
-    - 1.2.15
-    - 1.2.16
-    - 1.2.17-preview.3
-    - 1.3.2
-    - 1.3.3
-    - 1.3.4
-    - 1.3.5
-    - 1.3.6
-    - 1.3.7
-    - 1.3.8
-    - 1.3.9
-    - 1.4.9
-    - 1.5.7
-    - 1.6.0
-    - 1.7.1
-    - 1.8.0
-    - 1.9.0
-    - 1.10.2
-    - 1.11.2
-    - 1.12.5
-    - 1.13.5
-    - 1.14.1
-    - 1.14.4
-    - 1.14.7
-    - 1.14.9
-    - 1.14.12
-    - 1.14.13
-    - 1.14.15
-    - 1.14.16
-    - 1.14.17
-    - 1.14.18
-    - 1.15.1
-    - 1.15.4
-    - 1.15.7
-    - 1.15.9
-    - 1.15.12
-    - 1.15.13
-    - 1.15.15
-    - 1.15.16
-    - 1.15.17
-    - 1.15.18
-    - 1.17.0
-    - 1.17.1
-    - 1.17.2
-    - 1.17.6
-    - 1.17.7
-    - 2.0.0-preview.6
-    - 2.0.0-preview.8
-    - 2.0.0-preview.15
-    - 2.0.0-preview.17
-    - 2.0.0-preview.20
-    - 2.0.0-preview.21
-    - 2.0.0-preview.22
-    - 2.0.0
-    - 2.0.1
-    - 2.0.3
-    - 2.0.4
-    - 2.0.5
-    - 2.0.7
-    - 2.1.0-preview.3
-    - 2.1.0-preview.5
-    - 2.1.0-preview.6
-    - 2.1.0
-    - 2.2.0
-    - 2.3.1
-    - 2.4.3
-    - 2.4.4
-    - 2.5.1
-    - 2.5.2
-    - 2.6.0
-    - 2.7.1
-    - 2.8.1
-    - 2.8.2
-    - 2.9.1
-    - 2.9.2
-    - 2.9.3
-    - 2.10.0
-    - 2.10.1
-    - 2.10.2
-    - 2.11.2
-    compatible:
-    - 2.7.1
-    - 2.8.1
-    - 2.8.2
-    - 2.9.1
-    - 2.9.2
-    - 2.9.3
-    - 2.10.0
-    - 2.10.1
-    - 2.10.2
-    - 2.11.2
-    recommended: 2.7.1
-    deprecated: []
-  dependencies: []
-  resolvedDependencies: []
-  keywords:
-  - backup
-  - cloud
-  - collab
-  - collaborate
-  - collaboration
-  - control
-  - devops
-  - plastic
-  - plasticscm
-  - source
-  - team
-  - teams
-  - version
-  - vcs
-  - uvcs
-  registry:
-    id: main
-    name: 
-    url: https://packages.unity.cn
-    scopes: []
-    isDefault: 1
-    capabilities: 7
-    configSource: 0
-  hideInEditor: 1
-  isAssetStorePackage: 0
-  datePublishedTicks: 638751855910000000
-  documentationUrl: https://docs.unity3d.com/Packages/com.unity.collab-proxy@2.7/manual/index.html
-  hasRepository: 1
-  repository:
-    type: git
-    url: https://github.cds.internal.unity3d.com/unity/com.unity.cloud.collaborate.git
-    revision: cf9c21f84be18cbe2d6a93ec7cfbeb01b4310bbe
-    path: 
-  unityLifecycle:
-    version: 2.7.1
-    nextVersion: 
-    recommendedVersion: 
-    isDeprecated: 0
-    deprecationMessage: 
-  isDeprecated: 0
-  deprecationMessage: 
-  fingerprint: 
 - packageId: com.unity.feature.development@1.0.1
   testable: 0
   isDirectDependency: 1
   version: 1.0.1
   source: 2
-  resolvedPath: /Users/acincor/Desktop/BE/Library/PackageCache/com.unity.feature.development@1.0.1
+  resolvedPath: /Users/acincor/UnityTargets/Jeopardy/Library/PackageCache/com.unity.feature.development@1.0.1
   assetPath: Packages/com.unity.feature.development
   name: com.unity.feature.development
   displayName: Engineering
@@ -448,7 +221,7 @@ m_ResolvedPackages:
   isDirectDependency: 1
   version: 5.2.4
   source: 1
-  resolvedPath: /Users/acincor/Desktop/BE/Library/PackageCache/com.unity.probuilder@5.2.4
+  resolvedPath: /Users/acincor/UnityTargets/Jeopardy/Library/PackageCache/com.unity.probuilder@5.2.4
   assetPath: Packages/com.unity.probuilder
   name: com.unity.probuilder
   displayName: ProBuilder
@@ -596,574 +369,12 @@ m_ResolvedPackages:
   isDeprecated: 0
   deprecationMessage: 
   fingerprint: 
-- packageId: com.unity.textmeshpro@3.0.7
-  testable: 0
-  isDirectDependency: 1
-  version: 3.0.7
-  source: 1
-  resolvedPath: /Users/acincor/Desktop/BE/Library/PackageCache/com.unity.textmeshpro@3.0.7
-  assetPath: Packages/com.unity.textmeshpro
-  name: com.unity.textmeshpro
-  displayName: TextMeshPro
-  author:
-    name: 
-    email: 
-    url: 
-  category: Text Rendering
-  type: 
-  description: 'TextMeshPro is the ultimate text solution for Unity. It''s the perfect
-    replacement for Unity''s UI Text and the legacy Text Mesh.
-
-
-    Powerful and
-    easy to use, TextMeshPro (also known as TMP) uses Advanced Text Rendering techniques
-    along with a set of custom shaders; delivering substantial visual quality improvements
-    while giving users incredible flexibility when it comes to text styling and texturing.
-
-
-    TextMeshPro
-    provides Improved Control over text formatting and layout with features like
-    character, word, line and paragraph spacing, kerning, justified text, Links,
-    over 30 Rich Text Tags available, support for Multi Font & Sprites, Custom Styles
-    and more.
-
-
-    Great performance. Since the geometry created by TextMeshPro
-    uses two triangles per character just like Unity''s text components, this improved
-    visual quality and flexibility comes at no additional performance cost.'
-  status: 0
-  errors: []
-  versions:
-    all:
-    - 0.1.2
-    - 1.0.21
-    - 1.0.23
-    - 1.0.25
-    - 1.0.26
-    - 1.1.0
-    - 1.2.0
-    - 1.2.1
-    - 1.2.2
-    - 1.2.3
-    - 1.2.4
-    - 1.3.0-preview
-    - 1.3.0
-    - 1.4.0-preview.1b
-    - 1.4.0-preview.2a
-    - 1.4.0-preview.3a
-    - 1.4.0
-    - 1.4.1-preview.1
-    - 1.4.1
-    - 1.5.0-preview.1
-    - 1.5.0-preview.2
-    - 1.5.0-preview.3
-    - 1.5.0-preview.4
-    - 1.5.0-preview.5
-    - 1.5.0-preview.6
-    - 1.5.0-preview.7
-    - 1.5.0-preview.8
-    - 1.5.0-preview.10
-    - 1.5.0-preview.11
-    - 1.5.0-preview.12
-    - 1.5.0-preview.13
-    - 1.5.0-preview.14
-    - 1.5.0
-    - 1.5.1
-    - 1.5.3
-    - 1.5.4
-    - 1.5.5
-    - 1.5.6
-    - 1.6.0-preview.1
-    - 2.0.0
-    - 2.0.1-preview.1
-    - 2.0.1
-    - 2.1.0-preview.1
-    - 2.1.0-preview.2
-    - 2.1.0-preview.3
-    - 2.1.0-preview.4
-    - 2.1.0-preview.5
-    - 2.1.0-preview.7
-    - 2.1.0-preview.8
-    - 2.1.0-preview.10
-    - 2.1.0-preview.11
-    - 2.1.0-preview.12
-    - 2.1.0-preview.13
-    - 2.1.0-preview.14
-    - 2.1.0
-    - 2.1.1
-    - 2.1.3
-    - 2.1.4
-    - 2.1.5
-    - 2.1.6
-    - 2.2.0-preview.1
-    - 2.2.0-preview.2
-    - 2.2.0-preview.3
-    - 3.0.0-preview.1
-    - 3.0.0-preview.3
-    - 3.0.0-preview.4
-    - 3.0.0-preview.5
-    - 3.0.0-preview.7
-    - 3.0.0-preview.8
-    - 3.0.0-preview.10
-    - 3.0.0-preview.11
-    - 3.0.0-preview.12
-    - 3.0.0-preview.13
-    - 3.0.0-preview.14
-    - 3.0.0
-    - 3.0.1
-    - 3.0.3
-    - 3.0.4
-    - 3.0.5
-    - 3.0.6
-    - 3.0.7
-    - 3.0.8
-    - 3.0.9
-    - 3.2.0-pre.1
-    - 3.2.0-pre.2
-    - 3.2.0-pre.3
-    - 3.2.0-pre.4
-    - 3.2.0-pre.5
-    - 3.2.0-pre.6
-    - 3.2.0-pre.7
-    - 3.2.0-pre.8
-    - 3.2.0-pre.9
-    - 3.2.0-pre.10
-    - 3.2.0-pre.11
-    - 3.2.0-pre.12
-    - 3.2.0-pre.13
-    - 3.2.0-pre.14
-    - 4.0.0-pre.1
-    - 4.0.0-pre.2
-    compatible:
-    - 3.0.7
-    - 3.0.8
-    - 3.0.9
-    - 3.2.0-pre.1
-    - 3.2.0-pre.2
-    - 3.2.0-pre.3
-    - 3.2.0-pre.4
-    - 3.2.0-pre.5
-    - 3.2.0-pre.6
-    - 3.2.0-pre.7
-    - 3.2.0-pre.8
-    - 3.2.0-pre.9
-    - 3.2.0-pre.10
-    - 3.2.0-pre.11
-    - 3.2.0-pre.12
-    - 3.2.0-pre.13
-    - 3.2.0-pre.14
-    - 4.0.0-pre.1
-    - 4.0.0-pre.2
-    recommended: 3.0.9
-    deprecated: []
-  dependencies:
-  - name: com.unity.ugui
-    version: 1.0.0
-  resolvedDependencies:
-  - name: com.unity.ugui
-    version: 1.0.0
-  - name: com.unity.modules.ui
-    version: 1.0.0
-  - name: com.unity.modules.imgui
-    version: 1.0.0
-  keywords:
-  - TextMeshPro
-  - TextMesh Pro
-  - TMP
-  - Text
-  - SDF
-  registry:
-    id: main
-    name: 
-    url: https://packages.unity.cn
-    scopes: []
-    isDefault: 1
-    capabilities: 7
-    configSource: 0
-  hideInEditor: 1
-  isAssetStorePackage: 0
-  datePublishedTicks: 638410382150000000
-  documentationUrl: https://docs.unity3d.com/Packages/com.unity.textmeshpro@3.0/manual/index.html
-  hasRepository: 1
-  repository:
-    type: git
-    url: https://github.cds.internal.unity3d.com/unity/com.unity.textmeshpro.git
-    revision: 5c364f204e10eaec84fcbff640ad4d833774c1ed
-    path: 
-  unityLifecycle:
-    version: 3.0.7
-    nextVersion: 
-    recommendedVersion: 
-    isDeprecated: 0
-    deprecationMessage: 
-  isDeprecated: 0
-  deprecationMessage: 
-  fingerprint: 
-- packageId: com.unity.timeline@1.7.7
-  testable: 0
-  isDirectDependency: 1
-  version: 1.7.7
-  source: 1
-  resolvedPath: /Users/acincor/Desktop/BE/Library/PackageCache/com.unity.timeline@1.7.7
-  assetPath: Packages/com.unity.timeline
-  name: com.unity.timeline
-  displayName: Timeline
-  author:
-    name: 
-    email: 
-    url: 
-  category: 
-  type: 
-  description: Use Unity Timeline to create cinematic content, game-play sequences,
-    audio sequences, and complex particle effects.
-  status: 0
-  errors: []
-  versions:
-    all:
-    - 1.2.0
-    - 1.2.1
-    - 1.2.2
-    - 1.2.3
-    - 1.2.4
-    - 1.2.5
-    - 1.2.6
-    - 1.2.7
-    - 1.2.9
-    - 1.2.10
-    - 1.2.11
-    - 1.2.12
-    - 1.2.13
-    - 1.2.14
-    - 1.2.15
-    - 1.2.16
-    - 1.2.17
-    - 1.2.18
-    - 1.3.0-preview.2
-    - 1.3.0-preview.3
-    - 1.3.0-preview.5
-    - 1.3.0-preview.6
-    - 1.3.0-preview.7
-    - 1.3.0
-    - 1.3.1
-    - 1.3.2
-    - 1.3.3
-    - 1.3.4
-    - 1.3.5
-    - 1.3.6
-    - 1.3.7
-    - 1.4.0-preview.1
-    - 1.4.0-preview.2
-    - 1.4.0-preview.3
-    - 1.4.0-preview.5
-    - 1.4.0-preview.6
-    - 1.4.0-preview.7
-    - 1.4.0
-    - 1.4.1
-    - 1.4.2
-    - 1.4.3
-    - 1.4.4
-    - 1.4.5
-    - 1.4.6
-    - 1.4.7
-    - 1.4.8
-    - 1.5.0-pre.2
-    - 1.5.0-preview.1
-    - 1.5.0-preview.2
-    - 1.5.0-preview.3
-    - 1.5.0-preview.4
-    - 1.5.0-preview.5
-    - 1.5.1-pre.1
-    - 1.5.1-pre.2
-    - 1.5.1-pre.3
-    - 1.5.2
-    - 1.5.4
-    - 1.5.5
-    - 1.5.6
-    - 1.5.7
-    - 1.6.0-pre.1
-    - 1.6.0-pre.3
-    - 1.6.0-pre.4
-    - 1.6.0-pre.5
-    - 1.6.1
-    - 1.6.2
-    - 1.6.3
-    - 1.6.4
-    - 1.6.5
-    - 1.7.0-pre.1
-    - 1.7.0-pre.2
-    - 1.7.0
-    - 1.7.1
-    - 1.7.2
-    - 1.7.3
-    - 1.7.4
-    - 1.7.5
-    - 1.7.6
-    - 1.7.7
-    - 1.8.0
-    - 1.8.1
-    - 1.8.2
-    - 1.8.3
-    - 1.8.4
-    - 1.8.5
-    - 1.8.6
-    - 1.8.7
-    - 1.8.8
-    - 1.8.9
-    - 1.8.10
-    compatible:
-    - 1.7.7
-    - 1.8.0
-    - 1.8.1
-    - 1.8.2
-    - 1.8.3
-    - 1.8.4
-    - 1.8.5
-    - 1.8.6
-    - 1.8.7
-    - 1.8.8
-    - 1.8.9
-    - 1.8.10
-    recommended: 1.7.7
-    deprecated: []
-  dependencies:
-  - name: com.unity.modules.audio
-    version: 1.0.0
-  - name: com.unity.modules.director
-    version: 1.0.0
-  - name: com.unity.modules.animation
-    version: 1.0.0
-  - name: com.unity.modules.particlesystem
-    version: 1.0.0
-  resolvedDependencies:
-  - name: com.unity.modules.audio
-    version: 1.0.0
-  - name: com.unity.modules.director
-    version: 1.0.0
-  - name: com.unity.modules.animation
-    version: 1.0.0
-  - name: com.unity.modules.particlesystem
-    version: 1.0.0
-  keywords:
-  - unity
-  - animation
-  - editor
-  - timeline
-  - tools
-  registry:
-    id: main
-    name: 
-    url: https://packages.unity.cn
-    scopes: []
-    isDefault: 1
-    capabilities: 7
-    configSource: 0
-  hideInEditor: 1
-  isAssetStorePackage: 0
-  datePublishedTicks: 638768274310000000
-  documentationUrl: https://docs.unity3d.com/Packages/com.unity.timeline@1.7/manual/index.html
-  hasRepository: 1
-  repository:
-    type: git
-    url: https://github.cds.internal.unity3d.com/unity/com.unity.timeline.git
-    revision: 36c3480685dcb744f098f1a1efe0623247ffab49
-    path: 
-  unityLifecycle:
-    version: 1.7.7
-    nextVersion: 
-    recommendedVersion: 
-    isDeprecated: 0
-    deprecationMessage: 
-  isDeprecated: 0
-  deprecationMessage: 
-  fingerprint: 
-- packageId: com.unity.ugui@1.0.0
-  testable: 0
-  isDirectDependency: 1
-  version: 1.0.0
-  source: 2
-  resolvedPath: /Users/acincor/Desktop/BE/Library/PackageCache/com.unity.ugui@1.0.0
-  assetPath: Packages/com.unity.ugui
-  name: com.unity.ugui
-  displayName: Unity UI
-  author:
-    name: 
-    email: 
-    url: 
-  category: 
-  type: 
-  description: "Unity UI is a set of tools for developing user interfaces for games
-    and applications. It is a GameObject-based UI system that uses Components and
-    the Game View to arrange, position, and style user interfaces. \u200B You cannot
-    use Unity UI to create or change user interfaces in the Unity Editor."
-  status: 0
-  errors: []
-  versions:
-    all:
-    - 1.0.0
-    - 3.0.0-exp.1
-    - 3.0.0-exp.3
-    - 3.0.0-exp.4
-    compatible:
-    - 1.0.0
-    recommended: 1.0.0
-    deprecated: []
-  dependencies:
-  - name: com.unity.modules.ui
-    version: 1.0.0
-  - name: com.unity.modules.imgui
-    version: 1.0.0
-  resolvedDependencies:
-  - name: com.unity.modules.ui
-    version: 1.0.0
-  - name: com.unity.modules.imgui
-    version: 1.0.0
-  keywords:
-  - UI
-  - ugui
-  - Unity UI
-  - Canvas
-  registry:
-    id: main
-    name: 
-    url: https://packages.unity.cn
-    scopes: []
-    isDefault: 1
-    capabilities: 7
-    configSource: 0
-  hideInEditor: 1
-  isAssetStorePackage: 0
-  datePublishedTicks: 0
-  documentationUrl: 
-  hasRepository: 0
-  repository:
-    type: 
-    url: 
-    revision: 
-    path: 
-  unityLifecycle:
-    version: 1.0.0
-    nextVersion: 
-    recommendedVersion: 
-    isDeprecated: 0
-    deprecationMessage: 
-  isDeprecated: 0
-  deprecationMessage: 
-  fingerprint: 
-- packageId: com.unity.visualscripting@1.9.4
-  testable: 0
-  isDirectDependency: 1
-  version: 1.9.4
-  source: 1
-  resolvedPath: /Users/acincor/Desktop/BE/Library/PackageCache/com.unity.visualscripting@1.9.4
-  assetPath: Packages/com.unity.visualscripting
-  name: com.unity.visualscripting
-  displayName: Visual Scripting
-  author:
-    name: 
-    email: 
-    url: 
-  category: 
-  type: tool
-  description: 'Visual scripting is a workflow that uses visual, node-based graphs
-    to design behaviors rather than write lines of C# script.
-
-
-    Enabling artists,
-    designers and programmers alike, visual scripting can be used to design final
-    logic, quickly create prototypes, iterate on gameplay and create custom nodes
-    to help streamline collaboration.
-
-
-    Visual scripting is compatible with third-party
-    APIs, including most packages, assets and custom libraries.'
-  status: 0
-  errors: []
-  versions:
-    all:
-    - 1.5.0
-    - 1.5.1-pre.3
-    - 1.5.1-pre.5
-    - 1.5.1
-    - 1.5.2
-    - 1.6.0-pre.3
-    - 1.6.0
-    - 1.6.1
-    - 1.7.1
-    - 1.7.2
-    - 1.7.3
-    - 1.7.5
-    - 1.7.6
-    - 1.7.7
-    - 1.7.8
-    - 1.8.0-pre.1
-    - 1.8.0
-    - 1.9.0
-    - 1.9.1
-    - 1.9.2
-    - 1.9.4
-    - 1.9.5
-    - 1.9.6
-    - 1.9.7
-    - 1.9.8
-    - 1.9.9
-    compatible:
-    - 1.9.4
-    - 1.9.5
-    - 1.9.6
-    - 1.9.7
-    - 1.9.8
-    - 1.9.9
-    recommended: 1.9.9
-    deprecated:
-    - 1.8.0-pre.1
-  dependencies:
-  - name: com.unity.ugui
-    version: 1.0.0
-  - name: com.unity.modules.jsonserialize
-    version: 1.0.0
-  resolvedDependencies:
-  - name: com.unity.ugui
-    version: 1.0.0
-  - name: com.unity.modules.ui
-    version: 1.0.0
-  - name: com.unity.modules.imgui
-    version: 1.0.0
-  - name: com.unity.modules.jsonserialize
-    version: 1.0.0
-  keywords: []
-  registry:
-    id: main
-    name: 
-    url: https://packages.unity.cn
-    scopes: []
-    isDefault: 1
-    capabilities: 7
-    configSource: 0
-  hideInEditor: 1
-  isAssetStorePackage: 0
-  datePublishedTicks: 638488567680000000
-  documentationUrl: 
-  hasRepository: 1
-  repository:
-    type: git
-    url: https://github.cds.internal.unity3d.com/unity/com.unity.visualscripting.git
-    revision: 41aac2b7038c2b1259c546329890d3736ce2394e
-    path: 
-  unityLifecycle:
-    version: 1.9.4
-    nextVersion: 
-    recommendedVersion: 
-    isDeprecated: 0
-    deprecationMessage: 
-  isDeprecated: 0
-  deprecationMessage: 
-  fingerprint: 
 - packageId: com.unity.modules.ai@1.0.0
   testable: 0
   isDirectDependency: 1
   version: 1.0.0
   source: 2
-  resolvedPath: /Users/acincor/Desktop/BE/Library/PackageCache/com.unity.modules.ai@1.0.0
+  resolvedPath: /Users/acincor/UnityTargets/Jeopardy/Library/PackageCache/com.unity.modules.ai@1.0.0
   assetPath: Packages/com.unity.modules.ai
   name: com.unity.modules.ai
   displayName: AI
@@ -1219,7 +430,7 @@ m_ResolvedPackages:
   isDirectDependency: 1
   version: 1.0.0
   source: 2
-  resolvedPath: /Users/acincor/Desktop/BE/Library/PackageCache/com.unity.modules.androidjni@1.0.0
+  resolvedPath: /Users/acincor/UnityTargets/Jeopardy/Library/PackageCache/com.unity.modules.androidjni@1.0.0
   assetPath: Packages/com.unity.modules.androidjni
   name: com.unity.modules.androidjni
   displayName: Android JNI
@@ -1274,7 +485,7 @@ m_ResolvedPackages:
   isDirectDependency: 1
   version: 1.0.0
   source: 2
-  resolvedPath: /Users/acincor/Desktop/BE/Library/PackageCache/com.unity.modules.animation@1.0.0
+  resolvedPath: /Users/acincor/UnityTargets/Jeopardy/Library/PackageCache/com.unity.modules.animation@1.0.0
   assetPath: Packages/com.unity.modules.animation
   name: com.unity.modules.animation
   displayName: Animation
@@ -1330,7 +541,7 @@ m_ResolvedPackages:
   isDirectDependency: 1
   version: 1.0.0
   source: 2
-  resolvedPath: /Users/acincor/Desktop/BE/Library/PackageCache/com.unity.modules.assetbundle@1.0.0
+  resolvedPath: /Users/acincor/UnityTargets/Jeopardy/Library/PackageCache/com.unity.modules.assetbundle@1.0.0
   assetPath: Packages/com.unity.modules.assetbundle
   name: com.unity.modules.assetbundle
   displayName: Asset Bundle
@@ -1386,7 +597,7 @@ m_ResolvedPackages:
   isDirectDependency: 1
   version: 1.0.0
   source: 2
-  resolvedPath: /Users/acincor/Desktop/BE/Library/PackageCache/com.unity.modules.audio@1.0.0
+  resolvedPath: /Users/acincor/UnityTargets/Jeopardy/Library/PackageCache/com.unity.modules.audio@1.0.0
   assetPath: Packages/com.unity.modules.audio
   name: com.unity.modules.audio
   displayName: Audio
@@ -1442,7 +653,7 @@ m_ResolvedPackages:
   isDirectDependency: 1
   version: 1.0.0
   source: 2
-  resolvedPath: /Users/acincor/Desktop/BE/Library/PackageCache/com.unity.modules.cloth@1.0.0
+  resolvedPath: /Users/acincor/UnityTargets/Jeopardy/Library/PackageCache/com.unity.modules.cloth@1.0.0
   assetPath: Packages/com.unity.modules.cloth
   name: com.unity.modules.cloth
   displayName: Cloth
@@ -1502,7 +713,7 @@ m_ResolvedPackages:
   isDirectDependency: 1
   version: 1.0.0
   source: 2
-  resolvedPath: /Users/acincor/Desktop/BE/Library/PackageCache/com.unity.modules.director@1.0.0
+  resolvedPath: /Users/acincor/UnityTargets/Jeopardy/Library/PackageCache/com.unity.modules.director@1.0.0
   assetPath: Packages/com.unity.modules.director
   name: com.unity.modules.director
   displayName: Director
@@ -1566,7 +777,7 @@ m_ResolvedPackages:
   isDirectDependency: 1
   version: 1.0.0
   source: 2
-  resolvedPath: /Users/acincor/Desktop/BE/Library/PackageCache/com.unity.modules.imageconversion@1.0.0
+  resolvedPath: /Users/acincor/UnityTargets/Jeopardy/Library/PackageCache/com.unity.modules.imageconversion@1.0.0
   assetPath: Packages/com.unity.modules.imageconversion
   name: com.unity.modules.imageconversion
   displayName: Image Conversion
@@ -1623,7 +834,7 @@ m_ResolvedPackages:
   isDirectDependency: 1
   version: 1.0.0
   source: 2
-  resolvedPath: /Users/acincor/Desktop/BE/Library/PackageCache/com.unity.modules.imgui@1.0.0
+  resolvedPath: /Users/acincor/UnityTargets/Jeopardy/Library/PackageCache/com.unity.modules.imgui@1.0.0
   assetPath: Packages/com.unity.modules.imgui
   name: com.unity.modules.imgui
   displayName: IMGUI
@@ -1679,7 +890,7 @@ m_ResolvedPackages:
   isDirectDependency: 1
   version: 1.0.0
   source: 2
-  resolvedPath: /Users/acincor/Desktop/BE/Library/PackageCache/com.unity.modules.jsonserialize@1.0.0
+  resolvedPath: /Users/acincor/UnityTargets/Jeopardy/Library/PackageCache/com.unity.modules.jsonserialize@1.0.0
   assetPath: Packages/com.unity.modules.jsonserialize
   name: com.unity.modules.jsonserialize
   displayName: JSONSerialize
@@ -1735,7 +946,7 @@ m_ResolvedPackages:
   isDirectDependency: 1
   version: 1.0.0
   source: 2
-  resolvedPath: /Users/acincor/Desktop/BE/Library/PackageCache/com.unity.modules.particlesystem@1.0.0
+  resolvedPath: /Users/acincor/UnityTargets/Jeopardy/Library/PackageCache/com.unity.modules.particlesystem@1.0.0
   assetPath: Packages/com.unity.modules.particlesystem
   name: com.unity.modules.particlesystem
   displayName: Particle System
@@ -1791,7 +1002,7 @@ m_ResolvedPackages:
   isDirectDependency: 1
   version: 1.0.0
   source: 2
-  resolvedPath: /Users/acincor/Desktop/BE/Library/PackageCache/com.unity.modules.physics@1.0.0
+  resolvedPath: /Users/acincor/UnityTargets/Jeopardy/Library/PackageCache/com.unity.modules.physics@1.0.0
   assetPath: Packages/com.unity.modules.physics
   name: com.unity.modules.physics
   displayName: Physics
@@ -1847,7 +1058,7 @@ m_ResolvedPackages:
   isDirectDependency: 1
   version: 1.0.0
   source: 2
-  resolvedPath: /Users/acincor/Desktop/BE/Library/PackageCache/com.unity.modules.physics2d@1.0.0
+  resolvedPath: /Users/acincor/UnityTargets/Jeopardy/Library/PackageCache/com.unity.modules.physics2d@1.0.0
   assetPath: Packages/com.unity.modules.physics2d
   name: com.unity.modules.physics2d
   displayName: Physics 2D
@@ -1903,7 +1114,7 @@ m_ResolvedPackages:
   isDirectDependency: 1
   version: 1.0.0
   source: 2
-  resolvedPath: /Users/acincor/Desktop/BE/Library/PackageCache/com.unity.modules.screencapture@1.0.0
+  resolvedPath: /Users/acincor/UnityTargets/Jeopardy/Library/PackageCache/com.unity.modules.screencapture@1.0.0
   assetPath: Packages/com.unity.modules.screencapture
   name: com.unity.modules.screencapture
   displayName: Screen Capture
@@ -1963,7 +1174,7 @@ m_ResolvedPackages:
   isDirectDependency: 1
   version: 1.0.0
   source: 2
-  resolvedPath: /Users/acincor/Desktop/BE/Library/PackageCache/com.unity.modules.terrain@1.0.0
+  resolvedPath: /Users/acincor/UnityTargets/Jeopardy/Library/PackageCache/com.unity.modules.terrain@1.0.0
   assetPath: Packages/com.unity.modules.terrain
   name: com.unity.modules.terrain
   displayName: Terrain
@@ -2019,7 +1230,7 @@ m_ResolvedPackages:
   isDirectDependency: 1
   version: 1.0.0
   source: 2
-  resolvedPath: /Users/acincor/Desktop/BE/Library/PackageCache/com.unity.modules.terrainphysics@1.0.0
+  resolvedPath: /Users/acincor/UnityTargets/Jeopardy/Library/PackageCache/com.unity.modules.terrainphysics@1.0.0
   assetPath: Packages/com.unity.modules.terrainphysics
   name: com.unity.modules.terrainphysics
   displayName: Terrain Physics
@@ -2083,7 +1294,7 @@ m_ResolvedPackages:
   isDirectDependency: 1
   version: 1.0.0
   source: 2
-  resolvedPath: /Users/acincor/Desktop/BE/Library/PackageCache/com.unity.modules.tilemap@1.0.0
+  resolvedPath: /Users/acincor/UnityTargets/Jeopardy/Library/PackageCache/com.unity.modules.tilemap@1.0.0
   assetPath: Packages/com.unity.modules.tilemap
   name: com.unity.modules.tilemap
   displayName: Tilemap
@@ -2142,7 +1353,7 @@ m_ResolvedPackages:
   isDirectDependency: 1
   version: 1.0.0
   source: 2
-  resolvedPath: /Users/acincor/Desktop/BE/Library/PackageCache/com.unity.modules.ui@1.0.0
+  resolvedPath: /Users/acincor/UnityTargets/Jeopardy/Library/PackageCache/com.unity.modules.ui@1.0.0
   assetPath: Packages/com.unity.modules.ui
   name: com.unity.modules.ui
   displayName: UI
@@ -2198,7 +1409,7 @@ m_ResolvedPackages:
   isDirectDependency: 1
   version: 1.0.0
   source: 2
-  resolvedPath: /Users/acincor/Desktop/BE/Library/PackageCache/com.unity.modules.uielements@1.0.0
+  resolvedPath: /Users/acincor/UnityTargets/Jeopardy/Library/PackageCache/com.unity.modules.uielements@1.0.0
   assetPath: Packages/com.unity.modules.uielements
   name: com.unity.modules.uielements
   displayName: UIElements
@@ -2266,7 +1477,7 @@ m_ResolvedPackages:
   isDirectDependency: 1
   version: 1.0.0
   source: 2
-  resolvedPath: /Users/acincor/Desktop/BE/Library/PackageCache/com.unity.modules.umbra@1.0.0
+  resolvedPath: /Users/acincor/UnityTargets/Jeopardy/Library/PackageCache/com.unity.modules.umbra@1.0.0
   assetPath: Packages/com.unity.modules.umbra
   name: com.unity.modules.umbra
   displayName: Umbra
@@ -2322,7 +1533,7 @@ m_ResolvedPackages:
   isDirectDependency: 1
   version: 1.0.0
   source: 2
-  resolvedPath: /Users/acincor/Desktop/BE/Library/PackageCache/com.unity.modules.unityanalytics@1.0.0
+  resolvedPath: /Users/acincor/UnityTargets/Jeopardy/Library/PackageCache/com.unity.modules.unityanalytics@1.0.0
   assetPath: Packages/com.unity.modules.unityanalytics
   name: com.unity.modules.unityanalytics
   displayName: Unity Analytics
@@ -2386,7 +1597,7 @@ m_ResolvedPackages:
   isDirectDependency: 1
   version: 1.0.0
   source: 2
-  resolvedPath: /Users/acincor/Desktop/BE/Library/PackageCache/com.unity.modules.unitywebrequest@1.0.0
+  resolvedPath: /Users/acincor/UnityTargets/Jeopardy/Library/PackageCache/com.unity.modules.unitywebrequest@1.0.0
   assetPath: Packages/com.unity.modules.unitywebrequest
   name: com.unity.modules.unitywebrequest
   displayName: Unity Web Request
@@ -2442,7 +1653,7 @@ m_ResolvedPackages:
   isDirectDependency: 1
   version: 1.0.0
   source: 2
-  resolvedPath: /Users/acincor/Desktop/BE/Library/PackageCache/com.unity.modules.unitywebrequestassetbundle@1.0.0
+  resolvedPath: /Users/acincor/UnityTargets/Jeopardy/Library/PackageCache/com.unity.modules.unitywebrequestassetbundle@1.0.0
   assetPath: Packages/com.unity.modules.unitywebrequestassetbundle
   name: com.unity.modules.unitywebrequestassetbundle
   displayName: Unity Web Request Asset Bundle
@@ -2506,7 +1717,7 @@ m_ResolvedPackages:
   isDirectDependency: 1
   version: 1.0.0
   source: 2
-  resolvedPath: /Users/acincor/Desktop/BE/Library/PackageCache/com.unity.modules.unitywebrequestaudio@1.0.0
+  resolvedPath: /Users/acincor/UnityTargets/Jeopardy/Library/PackageCache/com.unity.modules.unitywebrequestaudio@1.0.0
   assetPath: Packages/com.unity.modules.unitywebrequestaudio
   name: com.unity.modules.unitywebrequestaudio
   displayName: Unity Web Request Audio
@@ -2570,7 +1781,7 @@ m_ResolvedPackages:
   isDirectDependency: 1
   version: 1.0.0
   source: 2
-  resolvedPath: /Users/acincor/Desktop/BE/Library/PackageCache/com.unity.modules.unitywebrequesttexture@1.0.0
+  resolvedPath: /Users/acincor/UnityTargets/Jeopardy/Library/PackageCache/com.unity.modules.unitywebrequesttexture@1.0.0
   assetPath: Packages/com.unity.modules.unitywebrequesttexture
   name: com.unity.modules.unitywebrequesttexture
   displayName: Unity Web Request Texture
@@ -2634,7 +1845,7 @@ m_ResolvedPackages:
   isDirectDependency: 1
   version: 1.0.0
   source: 2
-  resolvedPath: /Users/acincor/Desktop/BE/Library/PackageCache/com.unity.modules.unitywebrequestwww@1.0.0
+  resolvedPath: /Users/acincor/UnityTargets/Jeopardy/Library/PackageCache/com.unity.modules.unitywebrequestwww@1.0.0
   assetPath: Packages/com.unity.modules.unitywebrequestwww
   name: com.unity.modules.unitywebrequestwww
   displayName: Unity Web Request WWW
@@ -2714,7 +1925,7 @@ m_ResolvedPackages:
   isDirectDependency: 1
   version: 1.0.0
   source: 2
-  resolvedPath: /Users/acincor/Desktop/BE/Library/PackageCache/com.unity.modules.vehicles@1.0.0
+  resolvedPath: /Users/acincor/UnityTargets/Jeopardy/Library/PackageCache/com.unity.modules.vehicles@1.0.0
   assetPath: Packages/com.unity.modules.vehicles
   name: com.unity.modules.vehicles
   displayName: Vehicles
@@ -2774,7 +1985,7 @@ m_ResolvedPackages:
   isDirectDependency: 1
   version: 1.0.0
   source: 2
-  resolvedPath: /Users/acincor/Desktop/BE/Library/PackageCache/com.unity.modules.video@1.0.0
+  resolvedPath: /Users/acincor/UnityTargets/Jeopardy/Library/PackageCache/com.unity.modules.video@1.0.0
   assetPath: Packages/com.unity.modules.video
   name: com.unity.modules.video
   displayName: Video
@@ -2842,7 +2053,7 @@ m_ResolvedPackages:
   isDirectDependency: 1
   version: 1.0.0
   source: 2
-  resolvedPath: /Users/acincor/Desktop/BE/Library/PackageCache/com.unity.modules.vr@1.0.0
+  resolvedPath: /Users/acincor/UnityTargets/Jeopardy/Library/PackageCache/com.unity.modules.vr@1.0.0
   assetPath: Packages/com.unity.modules.vr
   name: com.unity.modules.vr
   displayName: VR
@@ -2912,7 +2123,7 @@ m_ResolvedPackages:
   isDirectDependency: 1
   version: 1.0.0
   source: 2
-  resolvedPath: /Users/acincor/Desktop/BE/Library/PackageCache/com.unity.modules.wind@1.0.0
+  resolvedPath: /Users/acincor/UnityTargets/Jeopardy/Library/PackageCache/com.unity.modules.wind@1.0.0
   assetPath: Packages/com.unity.modules.wind
   name: com.unity.modules.wind
   displayName: Wind
@@ -2968,7 +2179,7 @@ m_ResolvedPackages:
   isDirectDependency: 1
   version: 1.0.0
   source: 2
-  resolvedPath: /Users/acincor/Desktop/BE/Library/PackageCache/com.unity.modules.xr@1.0.0
+  resolvedPath: /Users/acincor/UnityTargets/Jeopardy/Library/PackageCache/com.unity.modules.xr@1.0.0
   assetPath: Packages/com.unity.modules.xr
   name: com.unity.modules.xr
   displayName: XR
@@ -3036,7 +2247,7 @@ m_ResolvedPackages:
   isDirectDependency: 0
   version: 1.0.0
   source: 2
-  resolvedPath: /Users/acincor/Desktop/BE/Library/PackageCache/com.unity.modules.subsystems@1.0.0
+  resolvedPath: /Users/acincor/UnityTargets/Jeopardy/Library/PackageCache/com.unity.modules.subsystems@1.0.0
   assetPath: Packages/com.unity.modules.subsystems
   name: com.unity.modules.subsystems
   displayName: Subsystems
@@ -3096,7 +2307,7 @@ m_ResolvedPackages:
   isDirectDependency: 0
   version: 2.1.0
   source: 1
-  resolvedPath: /Users/acincor/Desktop/BE/Library/PackageCache/com.unity.settings-manager@2.1.0
+  resolvedPath: /Users/acincor/UnityTargets/Jeopardy/Library/PackageCache/com.unity.settings-manager@2.1.0
   assetPath: Packages/com.unity.settings-manager
   name: com.unity.settings-manager
   displayName: Settings Manager
@@ -3162,7 +2373,7 @@ m_ResolvedPackages:
   isDirectDependency: 0
   version: 2.0.22
   source: 1
-  resolvedPath: /Users/acincor/Desktop/BE/Library/PackageCache/com.unity.ide.visualstudio@2.0.22
+  resolvedPath: /Users/acincor/UnityTargets/Jeopardy/Library/PackageCache/com.unity.ide.visualstudio@2.0.22
   assetPath: Packages/com.unity.ide.visualstudio
   name: com.unity.ide.visualstudio
   displayName: Visual Studio Editor
@@ -3258,7 +2469,7 @@ m_ResolvedPackages:
   isDirectDependency: 0
   version: 3.0.36
   source: 1
-  resolvedPath: /Users/acincor/Desktop/BE/Library/PackageCache/com.unity.ide.rider@3.0.36
+  resolvedPath: /Users/acincor/UnityTargets/Jeopardy/Library/PackageCache/com.unity.ide.rider@3.0.36
   assetPath: Packages/com.unity.ide.rider
   name: com.unity.ide.rider
   displayName: JetBrains Rider Editor
@@ -3368,7 +2579,7 @@ m_ResolvedPackages:
   isDirectDependency: 0
   version: 1.2.5
   source: 1
-  resolvedPath: /Users/acincor/Desktop/BE/Library/PackageCache/com.unity.ide.vscode@1.2.5
+  resolvedPath: /Users/acincor/UnityTargets/Jeopardy/Library/PackageCache/com.unity.ide.vscode@1.2.5
   assetPath: Packages/com.unity.ide.vscode
   name: com.unity.ide.vscode
   displayName: Visual Studio Code Editor
@@ -3437,7 +2648,7 @@ m_ResolvedPackages:
   isDirectDependency: 0
   version: 1.0.0
   source: 1
-  resolvedPath: /Users/acincor/Desktop/BE/Library/PackageCache/com.unity.editorcoroutines@1.0.0
+  resolvedPath: /Users/acincor/UnityTargets/Jeopardy/Library/PackageCache/com.unity.editorcoroutines@1.0.0
   assetPath: Packages/com.unity.editorcoroutines
   name: com.unity.editorcoroutines
   displayName: Editor Coroutines
@@ -3505,7 +2716,7 @@ m_ResolvedPackages:
   isDirectDependency: 0
   version: 1.2.3
   source: 1
-  resolvedPath: /Users/acincor/Desktop/BE/Library/PackageCache/com.unity.performance.profile-analyzer@1.2.3
+  resolvedPath: /Users/acincor/UnityTargets/Jeopardy/Library/PackageCache/com.unity.performance.profile-analyzer@1.2.3
   assetPath: Packages/com.unity.performance.profile-analyzer
   name: com.unity.performance.profile-analyzer
   displayName: Profile Analyzer
@@ -3580,7 +2791,7 @@ m_ResolvedPackages:
   isDirectDependency: 0
   version: 1.1.33
   source: 1
-  resolvedPath: /Users/acincor/Desktop/BE/Library/PackageCache/com.unity.test-framework@1.1.33
+  resolvedPath: /Users/acincor/UnityTargets/Jeopardy/Library/PackageCache/com.unity.test-framework@1.1.33
   assetPath: Packages/com.unity.test-framework
   name: com.unity.test-framework
   displayName: Test Framework
@@ -3722,7 +2933,7 @@ m_ResolvedPackages:
   isDirectDependency: 0
   version: 1.2.6
   source: 1
-  resolvedPath: /Users/acincor/Desktop/BE/Library/PackageCache/com.unity.testtools.codecoverage@1.2.6
+  resolvedPath: /Users/acincor/UnityTargets/Jeopardy/Library/PackageCache/com.unity.testtools.codecoverage@1.2.6
   assetPath: Packages/com.unity.testtools.codecoverage
   name: com.unity.testtools.codecoverage
   displayName: Code Coverage
@@ -3826,93 +3037,12 @@ m_ResolvedPackages:
   isDeprecated: 0
   deprecationMessage: 
   fingerprint: 
-- packageId: com.unity.nuget.newtonsoft-json@3.2.1
-  testable: 0
-  isDirectDependency: 0
-  version: 3.2.1
-  source: 1
-  resolvedPath: /Users/acincor/Desktop/BE/Library/PackageCache/com.unity.nuget.newtonsoft-json@3.2.1
-  assetPath: Packages/com.unity.nuget.newtonsoft-json
-  name: com.unity.nuget.newtonsoft-json
-  displayName: Newtonsoft Json
-  author:
-    name: 
-    email: 
-    url: 
-  category: 
-  type: library
-  description: 'Newtonsoft Json for use in Unity projects and Unity packages. Currently
-    synced to version 13.0.2.
-
-
-    This package is used for advanced json serialization
-    and deserialization. Most Unity users will be better suited using the existing
-    json tools built into Unity.
-
-    To avoid assembly clashes, please use this
-    package if you intend to use Newtonsoft Json.'
-  status: 0
-  errors: []
-  versions:
-    all:
-    - 1.0.0-preview.2
-    - 1.0.0-preview.3
-    - 1.0.0-preview.4
-    - 1.0.1-preview.1
-    - 1.1.2
-    - 2.0.0-preview
-    - 2.0.0-preview.1
-    - 2.0.0-preview.2
-    - 2.0.0
-    - 2.0.1-preview.1
-    - 2.0.2
-    - 3.0.1
-    - 3.0.2
-    - 3.1.0
-    - 3.2.0
-    - 3.2.1
-    - 3.2.2
-    compatible:
-    - 3.2.1
-    - 3.2.2
-    recommended: 3.2.2
-    deprecated: []
-  dependencies: []
-  resolvedDependencies: []
-  keywords: []
-  registry:
-    id: main
-    name: 
-    url: https://packages.unity.cn
-    scopes: []
-    isDefault: 1
-    capabilities: 7
-    configSource: 0
-  hideInEditor: 1
-  isAssetStorePackage: 0
-  datePublishedTicks: 638186318800000000
-  documentationUrl: 
-  hasRepository: 1
-  repository:
-    type: git
-    url: https://github.cds.internal.unity3d.com/unity/com.unity.nuget.newtonsoft-json.git
-    revision: d8e49aef8979bef617144382052ec2f479645eaf
-    path: 
-  unityLifecycle:
-    version: 3.2.1
-    nextVersion: 
-    recommendedVersion: 
-    isDeprecated: 0
-    deprecationMessage: 
-  isDeprecated: 0
-  deprecationMessage: 
-  fingerprint: 
 - packageId: com.unity.ext.nunit@1.0.6
   testable: 0
   isDirectDependency: 0
   version: 1.0.6
   source: 1
-  resolvedPath: /Users/acincor/Desktop/BE/Library/PackageCache/com.unity.ext.nunit@1.0.6
+  resolvedPath: /Users/acincor/UnityTargets/Jeopardy/Library/PackageCache/com.unity.ext.nunit@1.0.6
   assetPath: Packages/com.unity.ext.nunit
   name: com.unity.ext.nunit
   displayName: Custom NUnit
