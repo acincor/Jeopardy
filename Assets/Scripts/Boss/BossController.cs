@@ -9,6 +9,7 @@ public class BossController : MonoBehaviour
     protected NavMeshAgent agent;
     protected BossState bossState;
     protected Danger systemDanger;
+    protected CharacterController controller;
     // Start is called before the first frame update
     void OnEnable() {
         systemDanger = GameObject.FindObjectOfType<Danger>();
@@ -16,7 +17,9 @@ public class BossController : MonoBehaviour
     public virtual void Start()
     {
         agent = GetComponent<NavMeshAgent>();
-        
+        controller = GetComponent<CharacterController>();
+        agent.updatePosition = false;
+        agent.updateRotation = false;
     }
     public virtual void SetState(BossState boss) {
         bossState = boss;
