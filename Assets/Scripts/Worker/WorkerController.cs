@@ -11,6 +11,7 @@ public class WorkerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        agent = GetComponent<NavMeshAgent>();
         controller = GetComponent<CharacterController>();
         agent.updatePosition = false;
         agent.updateRotation = false;

@@ -21,14 +21,12 @@ public class SafetyZone : MonoBehaviour
         All.Add(this);
     }
     public Phase CurrentPhase { get; private set; }
-
     public void AddDanger(float rate)
     {
         danger = Mathf.Clamp01(danger + rate * Time.deltaTime);
         Debug.Log($"danger = {danger}");
         UpdatePhase();
     }
-
     void UpdatePhase()
     {
         Phase newPhase =

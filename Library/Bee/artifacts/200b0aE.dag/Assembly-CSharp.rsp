@@ -354,6 +354,7 @@
 "Assets/Scripts/Worker/WorkerController.cs"
 "Assets/Scripts/Worker/WorkerState.cs"
 "Assets/Scripts/World/SafetyZone.cs"
+"Assets/Scripts/World/ZoneVisual.cs"
 -langversion:9.0
 /deterministic
 /optimize+
