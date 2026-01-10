@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5652356296841701806}
   m_Layer: 0
   m_Name: BossThreatArea
-  m_TagString: Untagged
+  m_TagString: Boss
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -79,9 +79,10 @@ GameObject:
   - component: {fileID: 540623035372787328}
   - component: {fileID: 1017429930966228400}
   - component: {fileID: 4665286770615098069}
+  - component: {fileID: 9180094748078821078}
   m_Layer: 0
   m_Name: Boss
-  m_TagString: Untagged
+  m_TagString: Boss
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -114,6 +115,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60ef808b81a37405192a94eabeb948ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bossState: 0
+  baseMoveSpeed: 5
+  baseRotationSpeed: 10
+  dangerMultiplier: 1
+  mistakeMultiplier: 1
+  isInZone: 0
 --- !u!114 &540623035372787328
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -126,6 +133,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89a01a5148ea74fc6ba894d034a2e86a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bossState: 0
+  baseMoveSpeed: 5
+  baseRotationSpeed: 10
+  dangerMultiplier: 1
+  mistakeMultiplier: 1
+  isInZone: 0
   enabledAI: 1
 --- !u!195 &1017429930966228400
 NavMeshAgent:
@@ -175,6 +188,23 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0.9, z: 0}
+--- !u!114 &9180094748078821078
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5467313298345570615}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23852374f936f49dda26beb1253b5298, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  catchDistance: 1.5
+  catchRadius: 0.6
+  workerLayer:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!1 &5504014392109479619
 GameObject:
   m_ObjectHideFlags: 0
@@ -189,7 +219,7 @@ GameObject:
   - component: {fileID: 7620013550078161419}
   m_Layer: 0
   m_Name: Body
-  m_TagString: Untagged
+  m_TagString: Boss
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -293,7 +323,7 @@ GameObject:
   - component: {fileID: 8346161438228737090}
   m_Layer: 0
   m_Name: Model
-  m_TagString: Untagged
+  m_TagString: Boss
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

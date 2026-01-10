@@ -10,6 +10,8 @@ public class Machine : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(Time.timeScale == 0f)
+            return;
         if(Input.GetKeyDown(KeyCode.E))
             destroying = true;
         else if(Input.GetKeyDown(KeyCode.C))
@@ -23,7 +25,6 @@ public class Machine : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log(other.tag);
         if (other.CompareTag("Worker"))
         {
             enter = true;

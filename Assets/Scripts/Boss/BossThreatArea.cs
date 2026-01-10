@@ -16,6 +16,8 @@ public class BossThreatArea : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(Time.timeScale == 0f)
+            return;
         if(enter) {
             interval += Time.deltaTime;
             if(interval >= 12f) {
@@ -25,7 +27,8 @@ public class BossThreatArea : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log($"enter = {other.tag}");
+        if(Time.timeScale == 0f)
+            return;
         if (other.CompareTag("Worker"))
         {
             interval = 0f;
@@ -36,6 +39,8 @@ public class BossThreatArea : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
+        if(Time.timeScale == 0f)
+            return;
         if (other.CompareTag("Worker"))
         {
             enter = false;

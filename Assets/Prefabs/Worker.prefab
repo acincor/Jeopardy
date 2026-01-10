@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6531207843421379389}
   - component: {fileID: 5086802534741742565}
   - component: {fileID: 839037613269239737}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Body
   m_TagString: Worker
   m_Icon: {fileID: 0}
@@ -119,7 +119,7 @@ GameObject:
   - component: {fileID: 8799937670106364800}
   - component: {fileID: 5311818861021334186}
   - component: {fileID: 8823980115047885358}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Worker
   m_TagString: Worker
   m_Icon: {fileID: 0}
@@ -154,7 +154,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea63450e9c616437dba155a66c88350d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  state: 0
+  workerState: 0
+  BornPoint: {fileID: 6989840941751873213}
+  speed: 5
+  gravity: 9.81
+  IsCaught: 0
+  CatchCount: 0
 --- !u!195 &5311818861021334186
 NavMeshAgent:
   m_ObjectHideFlags: 0

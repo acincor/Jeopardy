@@ -41,6 +41,8 @@ public class BossChase : BossController
         }
     }
     void Update() {
+        if(Time.timeScale == 0f)
+            return;
         if (agent.hasPath) {
             // 获取NavMeshAgent的下一个路径点
             Vector3 targetDirection = agent.steeringTarget - transform.position;
@@ -52,11 +54,11 @@ public class BossChase : BossController
                 transform.rotation = Quaternion.Slerp(
                     transform.rotation,
                     lookRotation,
-                    Time.deltaTime * 10f
+                    Time.deltaTime * rotationSpeed
                 );
                             
                 // 使用CharacterController移动
-                Vector3 moveVector = transform.forward * 5f * Time.deltaTime;
+                Vector3 moveVector = transform.forward * moveSpeed * Time.deltaTime;
                 controller.Move(moveVector);
                             
                 // 同步位置给NavMeshAgent
@@ -64,7 +66,7 @@ public class BossChase : BossController
             }
         }
     }
-    public override void DiscoverTarget()
+    public void DiscoverTarget()
     {
         float closestSqr = float.MaxValue;
         WorkerController closest = null;
@@ -72,7 +74,7 @@ public class BossChase : BossController
         List<WorkerController> targets = WorkerController.All;
         foreach (var t in targets)
         {
-            if(closest != null && closest.state == WorkerState.Destroying && t.state != WorkerState.Destroying)
+            if(closest != null && closest.workerState == WorkerState.Destroying && t.workerState != WorkerState.Destroying || t.isLeft)
                 continue;
             float sqr = (t.transform.position - myPos).sqrMagnitude;
             if (sqr < closestSqr)

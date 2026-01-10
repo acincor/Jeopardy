@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4677347911040960945}
-  - component: {fileID: 7388337726783014472}
   m_Layer: 0
   m_Name: SafetyZone
   m_TagString: Untagged
@@ -34,19 +33,6 @@ Transform:
   - {fileID: 5043220432233567228}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7388337726783014472
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2245894581134600025}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 099100c65acc04fdf825a3854e783f37, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  danger: 0
 --- !u!1 &3875586025962596055
 GameObject:
   m_ObjectHideFlags: 0
@@ -62,6 +48,7 @@ GameObject:
   - component: {fileID: 5047840305832614903}
   - component: {fileID: 3805876414453248315}
   - component: {fileID: 3769326145607921883}
+  - component: {fileID: 5116960876087907098}
   m_Layer: 0
   m_Name: ZoneBody
   m_TagString: Untagged
@@ -296,7 +283,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 50
+  m_VersionIndex: 53
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -413,6 +400,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69e65bb5012b940f5aef018277c452bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &5116960876087907098
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3875586025962596055}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 099100c65acc04fdf825a3854e783f37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  danger: 0
 --- !u!1001 &5455873374846489441
 PrefabInstance:
   m_ObjectHideFlags: 0

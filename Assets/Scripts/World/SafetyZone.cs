@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
+using System;
 public class SafetyZone : MonoBehaviour
 {
     public static readonly List<SafetyZone> All = new List<SafetyZone>();
@@ -12,6 +13,7 @@ public class SafetyZone : MonoBehaviour
         Critical,
         Collapse
     }
+    public Phase CurrentPhase { get; private set; }
     void OnDisable()
     {
         All.Remove(this);
@@ -20,7 +22,6 @@ public class SafetyZone : MonoBehaviour
     {
         All.Add(this);
     }
-    public Phase CurrentPhase { get; private set; }
     public void AddDanger(float rate)
     {
         danger = Mathf.Clamp01(danger + rate * Time.deltaTime);
@@ -39,6 +40,28 @@ public class SafetyZone : MonoBehaviour
         {
             Phase old = CurrentPhase;
             CurrentPhase = newPhase;
+        }
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if(Time.timeScale == 0f)
+            return;
+        Debug.Log($"enter = {other.tag}");
+        if (other.CompareTag("Boss"))
+        {
+            BossController boss = other.GetComponentInParent<BossController>();
+            boss.ApplyDanger(danger);
+            boss.isInZone = true;
+        }
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        if(Time.timeScale == 0f)
+            return;
+        if (other.CompareTag("Boss"))
+        {
+            BossController boss = other.GetComponentInParent<BossController>();
+            boss.isInZone = false;
         }
     }
 }

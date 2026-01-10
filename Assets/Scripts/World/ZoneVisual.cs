@@ -18,6 +18,8 @@ public class ZoneVisual : MonoBehaviour
     
     void Update()
     {
+        if(Time.timeScale == 0f)
+            return;
         if(zone.danger < 0.3)
             return;
         Color currentColor = Color.Lerp(startColor, endColor, zone.danger);
